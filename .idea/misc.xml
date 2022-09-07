@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/logo_github.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.155" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_github_user.xml" value="0.24791666666666667" />

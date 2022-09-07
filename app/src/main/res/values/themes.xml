@@ -2,16 +2,40 @@
     <!-- Base application theme. -->
     <style name="Theme.GithubUser" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_color</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/white</item>
+        <item name="android:statusBarColor" >@color/app_backround</item>
         <!-- Customize your theme here. -->
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
+
+    <style name="Theme.GithubUser.SplashTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:background">@drawable/splash_screen</item>
+    </style>
+
+    <style name="textStyleTemp">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="textStyleTemp.detailStats">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="textStyleTemp.detailStats.title">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="textStyleTemp.detailName">
+        <item name="android:textSize">22sp</item>
+    </style>
+
 </resources>
