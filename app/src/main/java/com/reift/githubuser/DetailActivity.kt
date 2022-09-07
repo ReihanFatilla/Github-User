@@ -1,5 +1,6 @@
 package com.reift.githubuser
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -24,30 +25,53 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpButton() {
         binding.apply {
-            btnBack.setOnClickListener {
-                finish()
-            }
+
         }
     }
 
     private fun setUpDetailView(user: User?) {
-        if (user != null){
-            binding.apply {
-                with(user){
-                    tvName.text = name
-                    tvUsername.text = username
-                    tvLocation.text = location
-                    tvCompany.text = company
-                    tvUserFollowers.text = follower.toString()
-                    tvUserFollowing.text = following.toString()
-                    tvUserRepository.text = repository.toString()
 
-                    Glide.with(applicationContext)
-                        .load(avatar)
-                        .into(imgUser)
+            binding.apply {
+                if (user != null){
+
+                    with(user){
+                        tvName.text = name
+                        tvUsername.text = username
+                        tvLocation.text = location
+                        tvCompany.text = company
+                        tvUserFollowers.text = follower.toString()
+                        tvUserFollowing.text = following.toString()
+                        tvUserRepository.text = repository.toString()
+
+                        Glide.with(applicationContext)
+                            .load(avatar)
+                            .into(imgUser)
+
+
+                        btnShare.setOnClickListener {
+                            val textValue = "This is ${user.name}'s GitHub Profile\n" +
+                                    "Username: ${user.username}\n" +
+                                    "Company: ${user.company}\n" +
+                                    "Location: ${user.location}\n" +
+                                    "Total ${user.repository} Repositories\n" +
+                                    "${user.follower} Followers & ${user.following} Following"
+
+                            val sendIntent: Intent = Intent().apply {
+                                action = Intent.ACTION_SEND
+                                putExtra(Intent.EXTRA_TEXT, textValue)
+                                type = "text/plain"
+                            }
+
+                            val shareIntent = Intent.createChooser(sendIntent, getString(R.string.txt_share_msg))
+                            startActivity(shareIntent)
+                        }
+                    }
+                }
+                btnBack.setOnClickListener {
+                    finish()
                 }
             }
-        }
+
     }
 
     companion object{
