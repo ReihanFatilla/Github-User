@@ -9,7 +9,7 @@ import com.reift.githubuser.DetailActivity
 import com.reift.githubuser.databinding.ItemGithubUserBinding
 import com.reift.githubuser.model.User
 
-class UserAdapter(): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     var listUser = ArrayList<User>()
 

@@ -1,9 +1,7 @@
 package com.reift.githubuser.data
 
 import android.content.Context
-import com.reift.githubuser.R
 import com.reift.githubuser.model.User
-import org.json.JSONArray
 import org.json.JSONObject
 
 object JsonUtils {

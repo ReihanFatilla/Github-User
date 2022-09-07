@@ -19,7 +19,8 @@
         android:focusable="true"
         app:tint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/back_button" />
 
     <TextView
         android:id="@+id/tv_username"
@@ -44,7 +45,8 @@
         app:tint="@color/primary_color"
         app:layout_constraintTop_toTopOf="@id/btn_back"
         app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/share_button" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_user"
@@ -69,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_user"
         />
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +81,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,7 +92,8 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 app:tint="@color/detail_icon"
-                android:src="@drawable/ic_location" />
+                android:src="@drawable/ic_location"
+                android:contentDescription="@string/location_icon" />
 
             <TextView
                 android:id="@+id/tv_location"
@@ -104,9 +107,9 @@
                 android:textAlignment="center"
                 />
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +123,8 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 app:tint="@color/detail_icon"
-                android:src="@drawable/ic_work" />
+                android:src="@drawable/ic_work"
+                android:contentDescription="@string/company_icon" />
 
             <TextView
                 android:id="@+id/tv_company"
@@ -134,9 +138,9 @@
                 android:textAlignment="center"
                 />
 
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 

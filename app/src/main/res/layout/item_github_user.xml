@@ -39,7 +39,7 @@
             android:clickable="true"
             android:focusable="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            android:contentDescription="Button Arrow" />
 
         <LinearLayout
             android:layout_width="0dp"
