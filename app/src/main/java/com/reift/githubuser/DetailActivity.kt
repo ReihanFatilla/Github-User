@@ -37,6 +37,7 @@ class DetailActivity : AppCompatActivity() {
                     tvName.text = name
                     tvUsername.text = username
                     tvLocation.text = location
+                    tvCompany.text = company
                     tvUserFollowers.text = follower.toString()
                     tvUserFollowing.text = following.toString()
                     tvUserRepository.text = repository.toString()
