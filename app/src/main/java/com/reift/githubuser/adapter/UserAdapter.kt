@@ -1,4 +1,4 @@
-package com.reift.githubuser
+package com.reift.githubuser.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
