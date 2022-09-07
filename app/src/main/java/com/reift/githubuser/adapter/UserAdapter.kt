@@ -1,9 +1,11 @@
 package com.reift.githubuser.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.reift.githubuser.DetailActivity
 import com.reift.githubuser.databinding.ItemGithubUserBinding
 import com.reift.githubuser.model.User
 
@@ -22,13 +24,24 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         UserViewHolder(ItemGithubUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.binding.apply {
-            with(listUser[position]){
-                tvName.text = name
-                tvUsername.text = username
-                Glide.with(imgUser.context)
-                    .load(avatar)
-                    .into(imgUser)
+        holder.apply {
+            binding.apply {
+                with(listUser[position]){
+                    tvName.text = name
+                    tvUsername.text = username
+                    Glide.with(imgUser.context)
+                        .load(avatar)
+                        .into(imgUser)
+                }
+            }
+
+            itemView.apply {
+                setOnClickListener {
+                    context.startActivity(
+                        Intent(context, DetailActivity::class.java)
+                            .putExtra(DetailActivity.EXTRA_DETAIL, listUser[position])
+                    )
+                }
             }
         }
     }

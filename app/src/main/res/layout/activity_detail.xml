@@ -4,15 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".DetailActivity"
+    android:paddingHorizontal="24dp"
+    >
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_back"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="reihanfatilla"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@id/btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        />
+
+    <ImageView
+        android:id="@+id/btn_share"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_share"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="@id/btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_user"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="120dp"
         android:src="@mipmap/ic_launcher"
         android:layout_marginTop="56dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -21,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Reihan Fatilla"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -29,17 +66,36 @@
         app:layout_constraintTop_toBottomOf="@id/img_user"
         />
 
-    <TextView
-        android:id="@+id/tv_username"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/ll_location"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="\@reihanfatilla"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        android:textAlignment="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name"
-        />
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            app:tint="@color/location_icon"
+            android:src="@drawable/ic_location" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Palu, Indonesia"
+            android:layout_marginStart="6dp"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_user_followers"
@@ -49,10 +105,10 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         tools:text="565"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="42dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_username"
+        app:layout_constraintTop_toBottomOf="@id/ll_location"
         />
 
     <TextView
@@ -77,10 +133,9 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         tools:text="56"
-        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toStartOf="@id/tv_follower"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_username"
+        app:layout_constraintTop_toTopOf="@id/tv_user_followers"
         />
 
     <TextView
@@ -105,10 +160,9 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         tools:text="56"
-        android:layout_marginTop="32dp"
         app:layout_constraintStart_toEndOf="@id/tv_follower"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_username"
+        app:layout_constraintTop_toTopOf="@id/tv_user_followers"
         />
 
     <TextView
