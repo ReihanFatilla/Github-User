@@ -16,7 +16,7 @@
         android:textSize="24sp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:text="Github User" />
+        android:text="@string/github_user" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_github_user"
