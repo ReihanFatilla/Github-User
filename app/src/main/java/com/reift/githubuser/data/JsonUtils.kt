@@ -17,6 +17,7 @@ object JsonUtils {
             val user = User(
                 jsonObjectData.getString("username"),
                 jsonObjectData.getString("name"),
+                jsonObjectData.getString("avatar"),
                 jsonObjectData.getString("company"),
                 jsonObjectData.getString("location"),
                 jsonObjectData.getInt("repository"),

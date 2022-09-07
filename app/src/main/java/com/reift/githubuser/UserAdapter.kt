@@ -27,7 +27,7 @@ class UserAdapter(): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                 tvName.text = name
                 tvUsername.text = username
                 Glide.with(imgUser.context)
-                    .load("https://avatars.githubusercontent.com/u/1?v=4")
+                    .load(avatar)
                     .into(imgUser)
             }
         }
