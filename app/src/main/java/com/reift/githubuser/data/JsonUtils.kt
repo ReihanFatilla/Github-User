@@ -9,7 +9,7 @@ import org.json.JSONObject
 object JsonUtils {
     fun getGithubUser(ctx: Context): List<User> {
         val result = ArrayList<User>()
-        val json = JSONObject(ctx.resources.openRawResource(R.raw.githubuser).bufferedReader().readText())
+        val json = JSONObject(ctx.resources.assets.open("githubuser.json").bufferedReader().readText())
         val jsonArray = json.getJSONArray("users")
 
         for(i in 0 until jsonArray.length()){

@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "username": "JakeWharton",
-      "name": "Jake Wharton",
-      "avatar": "@drawable/user1",
-      "company": "Google, Inc.",
-      "location": "Pittsburgh, PA, USA",
-      "repository": 102,
-      "follower": 56995,
-      "following": 12
+      "username": "auliamnaufal",
+      "name": "Naufal Aulia",
+      "avatar": "https://avatars.githubusercontent.com/u/60921990?v=4",
+      "company": "IDN Boarding School",
+      "location": "Depok, Indonesia",
+      "repository": 43,
+      "follower": 34,
+      "following": 44
     },
     {
       "username": "amitshekhariitbhu",
