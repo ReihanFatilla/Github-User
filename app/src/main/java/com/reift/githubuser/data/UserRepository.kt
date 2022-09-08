@@ -11,7 +11,7 @@ class UserRepository {
 
     private val apiService = ApiConfig.getApiService()
 
-    fun searchByUsername(responseHandler : (UserResponse) -> Unit, username: String) {
+    fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit) {
         apiService.searchByUsername(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -20,7 +20,7 @@ class UserRepository {
             }
     }
 
-    fun getUserDetail(responseHandler : (DetailResponse) -> Unit, username: String) {
+    fun getUserDetail(username: String, responseHandler : (DetailResponse) -> Unit) {
         apiService.getUserDetail(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -29,7 +29,7 @@ class UserRepository {
             }
     }
 
-    fun getUserFollowers(responseHandler : (List<FollowResponse>) -> Unit, username: String) {
+    fun getUserFollowers(username: String, responseHandler : (List<FollowResponse>) -> Unit) {
         apiService.getUserFollowers(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -38,7 +38,7 @@ class UserRepository {
             }
     }
 
-    fun getUserFollowing(responseHandler : (List<FollowResponse>) -> Unit, username: String) {
+    fun getUserFollowing(username: String, responseHandler : (List<FollowResponse>) -> Unit) {
         apiService.getUserFollowing(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
