@@ -1,16 +1,13 @@
 package com.reift.githubuser.presentation.main
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.githubuser.adapter.UserAdapter
+import com.reift.githubuser.presentation.main.adapter.UserAdapter
 import com.reift.githubuser.databinding.ActivityMainBinding
 import com.reift.githubuser.utils.Utils
-import kotlin.random.Random
-import kotlin.random.nextInt
 
 class MainActivity : AppCompatActivity() {
 

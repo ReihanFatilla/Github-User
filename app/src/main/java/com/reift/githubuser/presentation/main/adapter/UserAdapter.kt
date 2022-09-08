@@ -1,4 +1,4 @@
-package com.reift.githubuser.adapter
+package com.reift.githubuser.presentation.main.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,8 +8,6 @@ import com.bumptech.glide.Glide
 import com.reift.githubuser.data.network.response.search.ItemsItem
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.databinding.ItemGithubUserBinding
-import com.reift.githubuser.model.User
-import com.reift.githubuser.utils.Utils
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 

@@ -5,29 +5,39 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.reift.githubuser.R
+import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.model.User
 import com.reift.githubuser.utils.Utils
 
 class DetailActivity : AppCompatActivity() {
 
-    private var _user: User? = null
-    private val user get() = _user!!
-
     private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding!!
+
+    private var _viewModel: DetailViewModel? = null
+    private val viewModel get() = _viewModel!!
+
+    private var _user: DetailResponse? = null
+    private val user get() = _user!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        _user = intent.getParcelableExtra(EXTRA_DETAIL)
+        _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
+
+        viewModel.getUserDetail(intent.getStringExtra(EXTRA_DETAIL).toString())
+        viewModel.detailResponse.observe(this){
+            _user = it
+            setUpDetailView()
+        }
 
         setUpToolbar()
-        setUpDetailView()
     }
 
     private fun setUpToolbar() {
@@ -38,22 +48,22 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpDetailView() {
-
         binding.apply {
             with(user) {
                 tvName.text = name
-                tvUsername.text = username
+                tvUsername.text = login
                 tvLocation.text = location
                 tvCompany.text = company
-                tvUserFollowers.text = follower.toString()
+                tvUserFollowers.text = followers.toString()
                 tvUserFollowing.text = following.toString()
-                tvUserRepository.text = repository.toString()
+                tvUserRepository.text = publicRepos.toString()
 
                 Glide.with(applicationContext)
-                    .load(avatar)
+                    .load(avatarUrl)
                     .into(imgUser)
 
             }
+
         }
 
     }
