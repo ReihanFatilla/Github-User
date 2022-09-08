@@ -5,19 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.ItemFollowBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 
-class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
+class FollowingAdapter: RecyclerView.Adapter<FollowingAdapter.FollowViewHolder>() {
 
-    var listFollow = ArrayList<FollowResponse>()
+    var listFollowing = ArrayList<FollowResponse>()
 
     fun setData(list: List<FollowResponse>){
-        listFollow.clear()
-        listFollow.addAll(list)
+        listFollowing.clear()
+        listFollowing.addAll(list)
     }
 
     class FollowViewHolder(val binding: ItemFollowBinding): RecyclerView.ViewHolder(binding.root)
@@ -28,7 +27,7 @@ class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
     override fun onBindViewHolder(holder: FollowViewHolder, position: Int) {
         holder.apply {
             binding.apply {
-                with(listFollow[position]){
+                with(listFollowing[position]){
                     tvName.text = login
                     Glide.with(imgUser.context)
                         .load(avatarUrl)
@@ -40,12 +39,12 @@ class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
                 setOnClickListener {
                     context.startActivity(
                         Intent(context, DetailActivity::class.java)
-                            .putExtra(Constant.EXTRA_DETAIL, listFollow[position].login)
+                            .putExtra(Constant.EXTRA_DETAIL, listFollowing[position].login)
                     )
                 }
             }
         }
     }
 
-    override fun getItemCount() = listFollow.size
+    override fun getItemCount() = listFollowing.size
 }
