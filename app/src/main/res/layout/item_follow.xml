@@ -7,7 +7,7 @@
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="30dp"
-    android:layout_marginVertical="6dp"
+    android:layout_marginTop="6dp"
     app:cardBackgroundColor="@color/card_background"
     >
 
@@ -18,8 +18,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:src="@mipmap/ic_launcher"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Reihan Fatilla"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:layout_marginHorizontal="18dp"
