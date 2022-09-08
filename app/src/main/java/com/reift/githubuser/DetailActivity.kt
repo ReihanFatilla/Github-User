@@ -2,12 +2,18 @@ package com.reift.githubuser
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.model.User
+import com.reift.githubuser.utils.Utils
 
 class DetailActivity : AppCompatActivity() {
+
+    private var _user: User? = null
+    private val user get() = _user!!
 
     private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding!!
@@ -17,55 +23,65 @@ class DetailActivity : AppCompatActivity() {
         _binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userDetail = intent.getParcelableExtra<User>(EXTRA_DETAIL)
+        _user = intent.getParcelableExtra(EXTRA_DETAIL)
 
-        setUpDetailView(userDetail)
+        setUpToolbar()
+        setUpDetailView()
     }
 
-    private fun setUpDetailView(user: User?) {
+    private fun setUpToolbar() {
+        binding.toolbarDetail.apply {
+            setNavigationIcon(R.drawable.ic_back)
+            setSupportActionBar(this)
+        }
+    }
+
+    private fun setUpDetailView() {
 
         binding.apply {
-            if (user != null) {
+            with(user) {
+                tvName.text = name
+                tvUsername.text = username
+                tvLocation.text = location
+                tvCompany.text = company
+                tvUserFollowers.text = follower.toString()
+                tvUserFollowing.text = following.toString()
+                tvUserRepository.text = repository.toString()
 
-                with(user) {
-                    tvName.text = name
-                    tvUsername.text = username
-                    tvLocation.text = location
-                    tvCompany.text = company
-                    tvUserFollowers.text = follower.toString()
-                    tvUserFollowing.text = following.toString()
-                    tvUserRepository.text = repository.toString()
+                Glide.with(applicationContext)
+                    .load(avatar)
+                    .into(imgUser)
 
-                    Glide.with(applicationContext)
-                        .load(avatar)
-                        .into(imgUser)
-
-
-                    btnShare.setOnClickListener {
-                        val textValue = "This is ${user.name}'s GitHub Profile\n" +
-                                "Username: ${user.username}\n" +
-                                "Company: ${user.company}\n" +
-                                "Location: ${user.location}\n" +
-                                "Total ${user.repository} Repositories\n" +
-                                "${user.follower} Followers & ${user.following} Following"
-
-                        val sendIntent: Intent = Intent().apply {
-                            action = Intent.ACTION_SEND
-                            putExtra(Intent.EXTRA_TEXT, textValue)
-                            type = "text/plain"
-                        }
-
-                        val shareIntent =
-                            Intent.createChooser(sendIntent, getString(R.string.txt_share_msg))
-                        startActivity(shareIntent)
-                    }
-                }
-            }
-            btnBack.setOnClickListener {
-                finish()
             }
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_share -> {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, Utils.getShareMessage(user))
+                    type = "text/plain"
+                }
+
+                val shareIntent =
+                    Intent.createChooser(sendIntent, getString(R.string.txt_share_msg))
+                startActivity(shareIntent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 
     companion object {

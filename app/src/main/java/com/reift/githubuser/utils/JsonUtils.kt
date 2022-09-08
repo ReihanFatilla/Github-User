@@ -1,4 +1,4 @@
-package com.reift.githubuser.data
+package com.reift.githubuser.utils
 
 import android.content.Context
 import com.reift.githubuser.model.User

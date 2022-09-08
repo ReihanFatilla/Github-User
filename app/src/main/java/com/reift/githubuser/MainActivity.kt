@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.githubuser.adapter.UserAdapter
-import com.reift.githubuser.data.JsonUtils
+import com.reift.githubuser.utils.JsonUtils
 import com.reift.githubuser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
