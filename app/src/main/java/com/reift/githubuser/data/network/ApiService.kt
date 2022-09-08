@@ -1,9 +1,10 @@
 package com.reift.githubuser.data.network
 
 import com.reift.githubuser.BuildConfig.API_KEY
+import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.data.network.response.search.UserResponse
-import io.reactivex.Flowable
+import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -23,7 +24,7 @@ interface ApiService {
     fun getUserDetail(
         @Path("username")
         username: String
-    ): Flowable<UserResponse>
+    ): Flowable<DetailResponse>
 
     @GET("users/{username}/followers")
     @Headers("Authorization: token $API_KEY")
