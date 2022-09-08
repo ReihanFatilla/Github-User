@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_searchview.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/bg_tab_item.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_share.xml" value="0.155" />
