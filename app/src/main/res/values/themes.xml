@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/app_backround</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColorHint">@color/gray</item>
     </style>
 
     <style name="Theme.GithubUser.SplashTheme">
