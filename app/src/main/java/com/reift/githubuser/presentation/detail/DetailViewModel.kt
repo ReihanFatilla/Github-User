@@ -16,19 +16,37 @@ class DetailViewModel: ViewModel() {
 
     fun getUserDetail(username: String){
         repository.getUserDetail(
-            username
-        ) { detailResponse.value = it }
+            username,
+            {
+                detailResponse.postValue(it)
+            },
+            {
+                detailResponse.postValue(null)
+            }
+        )
     }
 
     fun getUserFollowers(username: String){
         repository.getUserFollowers(
-            username
-        ) { followersResponse.value = it }
+            username,
+            {
+                followersResponse.postValue(it)
+            },
+            {
+                followersResponse.postValue(null)
+            }
+        )
     }
 
     fun getUserFollowing(username: String){
         repository.getUserFollowing(
-            username
-        ) { followingResponse.value = it }
+            username,
+            {
+                followingResponse.postValue(it)
+            },
+            {
+                followingResponse.postValue(null)
+            }
+        )
     }
 }

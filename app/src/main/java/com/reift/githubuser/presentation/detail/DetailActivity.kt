@@ -52,8 +52,8 @@ class DetailActivity : AppCompatActivity() {
             with(user) {
                 tvName.text = name
                 tvUsername.text = login
-                tvLocation.text = location
-                tvCompany.text = company
+                tvLocation.text = if(location.isNullOrEmpty()) "none" else location
+                tvCompany.text = if(company.isNullOrEmpty()) "none" else company
                 tvUserFollowers.text = followers.toString()
                 tvUserFollowing.text = following.toString()
                 tvUserRepository.text = publicRepos.toString()

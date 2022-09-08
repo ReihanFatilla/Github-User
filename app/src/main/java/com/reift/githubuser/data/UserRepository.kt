@@ -11,40 +11,60 @@ class UserRepository {
 
     private val apiService = ApiConfig.getApiService()
 
-    fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit) {
+    fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.searchByUsername(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                responseHandler(it)
-            }
+            .subscribe (
+                {
+                    responseHandler(it)
+                },
+                {
+                    errorHandler(it)
+                }
+            )
     }
 
-    fun getUserDetail(username: String, responseHandler : (DetailResponse) -> Unit) {
+    fun getUserDetail(username: String, responseHandler : (DetailResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.getUserDetail(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                responseHandler(it)
-            }
+            .subscribe (
+                {
+                    responseHandler(it)
+                },
+                {
+                    errorHandler(it)
+                }
+            )
     }
 
-    fun getUserFollowers(username: String, responseHandler : (List<FollowResponse>) -> Unit) {
+    fun getUserFollowers(username: String, responseHandler : (List<FollowResponse>) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.getUserFollowers(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                responseHandler(it)
-            }
+            .subscribe (
+                {
+                    responseHandler(it)
+                },
+                {
+                    errorHandler(it)
+                }
+            )
     }
 
-    fun getUserFollowing(username: String, responseHandler : (List<FollowResponse>) -> Unit) {
+    fun getUserFollowing(username: String, responseHandler : (List<FollowResponse>) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.getUserFollowing(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                responseHandler(it)
-            }
+            .subscribe(
+                {
+                    responseHandler(it)
+                },
+                {
+                    errorHandler(it)
+                }
+            )
     }
 
 }
