@@ -4,8 +4,6 @@
     <string name="repository">Repository</string>
     <string name="followers">Followers</string>
     <string name="txt_share_msg">Share GitHub User Profile to..</string>
-    <string name="back_button">Back Button</string>
-    <string name="share_button">Share Button</string>
     <string name="location_icon">Location Icon</string>
     <string name="company_icon">Company Icon</string>
     <string name="share">share</string>
