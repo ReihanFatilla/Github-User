@@ -17,24 +17,18 @@ class DetailViewModel: ViewModel() {
     fun getUserDetail(username: String){
         repository.getUserDetail(
             username
-        ) {
-            detailResponse.value = it
-        }
+        ) { detailResponse.value = it }
     }
 
     fun getUserFollowers(username: String){
         repository.getUserFollowers(
             username
-        ) {
-            followersResponse.value = it
-        }
+        ) { followersResponse.value = it }
     }
 
     fun getUserFollowing(username: String){
         repository.getUserFollowing(
             username
-        ) {
-            followingResponse.value = it
-        }
+        ) { followingResponse.value = it }
     }
 }

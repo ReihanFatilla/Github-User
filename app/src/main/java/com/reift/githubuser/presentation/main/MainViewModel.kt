@@ -14,8 +14,6 @@ class MainViewModel: ViewModel() {
     fun searchByUsername(username: String){
         repository.searchByUsername(
             username
-        ) {
-            userResponse.value = it.items
-        }
+        ) { userResponse.value = it.items }
     }
 }

@@ -15,7 +15,7 @@
         android:paddingTop="24dp">
 
         <SearchView
-            android:id="@+id/searchview"
+            android:id="@+id/sv_github_user"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="16dp"
@@ -34,7 +34,7 @@
             android:layout_marginTop="12dp"
             android:textSize="14sp"
             android:textColor="@color/gray"
-            android:text="@string/txt_search_result"
+            android:text="Search Result for Reihan"
             />
 
         <androidx.recyclerview.widget.RecyclerView
