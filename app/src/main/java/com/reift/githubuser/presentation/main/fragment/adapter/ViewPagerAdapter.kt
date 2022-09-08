@@ -16,12 +16,12 @@ class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
         val followingFragment = FollowFragment()
         val followingBundle = Bundle()
-        followingBundle.putString(Constant.BUNDLE_FOLLOWERS, Constant.TYPE_FOLLOWERS)
+        followingBundle.putString(Constant.BUNDLE_FOLLOW, Constant.TYPE_FOLLOWERS)
         followingFragment.arguments = followingBundle
 
         val followersFragment = FollowFragment()
         val followersBundle = Bundle()
-        followersBundle.putString(Constant.BUNDLE_FOLLOWERS, Constant.TYPE_FOLLOWERS)
+        followersBundle.putString(Constant.BUNDLE_FOLLOW, Constant.TYPE_FOLLOWERS)
         followersFragment.arguments = followersBundle
 
         return when(position) {
