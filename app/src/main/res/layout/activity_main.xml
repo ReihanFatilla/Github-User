@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.main.MainActivity"
-    android:background="@color/app_backround"
-    >
+    android:background="@color/app_backround">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="24dp">
+        android:paddingTop="24dp"
+        android:clipToPadding="false">
 
         <SearchView
             android:id="@+id/sv_github_user"
@@ -42,7 +43,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_github_user"
-            android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:layout_marginStart="-16dp"
+            android:layout_marginEnd="-16dp"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.githubuser.presentation.main.adapter.UserAdapter
 import com.reift.githubuser.databinding.ActivityMainBinding
@@ -60,8 +61,9 @@ class MainActivity : AppCompatActivity() {
             binding.rvGithubUser.apply {
                 val mAdapter = UserAdapter()
                 mAdapter.setData(it)
-                layoutManager = LinearLayoutManager(applicationContext)
+                layoutManager = GridLayoutManager(applicationContext, 2)
                 adapter = mAdapter
+                setHasFixedSize(true)
             }
 
         }
