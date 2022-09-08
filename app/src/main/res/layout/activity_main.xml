@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".presentation.main.MainActivity"
     android:background="@color/app_backround"
     >
 
@@ -27,12 +27,22 @@
             android:background="@drawable/bg_searchview"
             />
 
+        <TextView
+            android:id="@+id/tv_search_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:text="@string/txt_search_result"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_github_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_github_user"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

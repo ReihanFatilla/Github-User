@@ -1,4 +1,4 @@
-package com.reift.githubuser
+package com.reift.githubuser.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

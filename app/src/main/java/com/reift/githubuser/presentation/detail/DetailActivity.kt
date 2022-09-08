@@ -1,4 +1,4 @@
-package com.reift.githubuser
+package com.reift.githubuser.presentation.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.reift.githubuser.R
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.model.User
 import com.reift.githubuser.utils.Utils

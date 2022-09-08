@@ -7,4 +7,5 @@
     <string name="location_icon">Location Icon</string>
     <string name="company_icon">Company Icon</string>
     <string name="share">share</string>
+    <string name="txt_search_result">Search Result for</string>
 </resources>
