@@ -7,11 +7,13 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.model.User
+import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
 import com.reift.githubuser.utils.Utils
 
 class DetailActivity : AppCompatActivity() {
@@ -36,9 +38,20 @@ class DetailActivity : AppCompatActivity() {
         viewModel.detailResponse.observe(this){
             _user = it
             setUpDetailView()
+            setUpViewPager()
         }
 
         setUpToolbar()
+    }
+
+    private fun setUpViewPager() {
+        binding.viewpager.adapter = ViewPagerAdapter(this, user.login)
+        TabLayoutMediator(binding.tabFollow, binding.viewpager) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.followers)
+                1 -> tab.text = getString(R.string.following)
+            }
+        }.attach()
     }
 
     private fun setUpToolbar() {

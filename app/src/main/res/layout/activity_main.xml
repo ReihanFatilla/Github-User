@@ -22,8 +22,8 @@
             android:layout_marginTop="16dp"
             android:queryBackground="@android:color/transparent"
             android:searchIcon="@drawable/ic_search"
-            android:queryHint="Search beverages or foods"
-            android:autofillHints="Search beverages or foods"
+            android:queryHint="Search for user in github"
+            android:autofillHints="Search for user in github"
             android:iconifiedByDefault="false"
             android:background="@drawable/bg_searchview"
             />
