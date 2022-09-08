@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.ItemFollowBinding

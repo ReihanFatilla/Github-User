@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.search.ItemsItem
 import com.reift.githubuser.presentation.detail.DetailActivity
@@ -31,6 +32,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                     tvName.text = login
                     Glide.with(imgUser.context)
                         .load(avatarUrl)
+                        .override(500, 500)
                         .into(imgUser)
                 }
             }

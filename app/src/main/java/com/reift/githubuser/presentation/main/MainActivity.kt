@@ -1,6 +1,7 @@
 package com.reift.githubuser.presentation.main
 
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -36,36 +37,39 @@ class MainActivity : AppCompatActivity() {
         viewModel.searchByUsername(randomName)
         binding.tvSearchResult.text = searchResultMsg
 
-        binding.svGithubUser.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-                    viewModel.searchByUsername(query)
+        binding.svGithubUser.apply{
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if (query != null) {
+                        viewModel.searchByUsername(query)
+                    }
+                    return true
                 }
-                return true
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    searchResultMsg = "Search result for \"$newText\""
-                    binding.tvSearchResult.text = searchResultMsg
-                    viewModel.searchByUsername(newText)
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null) {
+                        searchResultMsg = "Search result for \"$newText\""
+                        binding.tvSearchResult.text = searchResultMsg
+                        viewModel.searchByUsername(newText)
+                    }
+                    return true
                 }
-                return true
-            }
-        })
+            })
+        }
+
     }
 
     private fun setUpRecyclerView() {
         viewModel.userResponse.observe(this@MainActivity) {
-
-            binding.rvGithubUser.apply {
-                val mAdapter = UserAdapter()
-                mAdapter.setData(it)
-                layoutManager = GridLayoutManager(applicationContext, 2)
-                adapter = mAdapter
-                setHasFixedSize(true)
+            if(it != null){
+                binding.rvGithubUser.apply {
+                    val mAdapter = UserAdapter()
+                    mAdapter.setData(it)
+                    layoutManager = GridLayoutManager(applicationContext, 2)
+                    adapter = mAdapter
+                    setHasFixedSize(true)
+                }
             }
-
         }
     }
 }

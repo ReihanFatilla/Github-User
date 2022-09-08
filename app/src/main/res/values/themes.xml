@@ -12,7 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/app_backround</item>
         <!-- Customize your theme here. -->
-        <item name="android:textColorHint">@color/gray</item>
     </style>
 
     <style name="Theme.GithubUser.SplashTheme">
@@ -37,6 +36,13 @@
 
     <style name="textStyleTemp.detailName">
         <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="searchViewStyle">
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textCursorDrawable">@drawable/color_cursor</item>
+        <item name="tint">@color/white</item>
     </style>
 
 </resources>

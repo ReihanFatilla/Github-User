@@ -7,12 +7,12 @@
     tools:context=".presentation.main.MainActivity"
     android:background="@color/app_backround">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="24dp"
+        android:paddingTop="16dp"
         android:clipToPadding="false">
 
         <SearchView
@@ -20,12 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="16dp"
+            android:theme="@style/searchViewStyle"
             android:queryBackground="@android:color/transparent"
             android:searchIcon="@drawable/ic_search"
-            android:queryHint="Search for user in github"
-            android:autofillHints="Search for user in github"
+            android:queryHint="Search for user"
+            android:autofillHints="Search for user"
             android:iconifiedByDefault="false"
             android:background="@drawable/bg_searchview"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
         <TextView
@@ -36,6 +38,7 @@
             android:textSize="14sp"
             android:textColor="@color/gray"
             tools:text="Search Result for Reihan"
+            app:layout_constraintTop_toBottomOf="@id/sv_github_user"
             />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -47,9 +50,10 @@
             app:spanCount="2"
             android:layout_marginStart="-16dp"
             android:layout_marginEnd="-16dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_search_result"
             />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.core.widget.NestedScrollView>

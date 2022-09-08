@@ -45,6 +45,7 @@ class FollowFragment : Fragment() {
 
                     viewModel.followersResponse.observe(viewLifecycleOwner) {
                         setUpFollowersRV(it)
+                        if(it == null) showLoading(true) else showLoading(false)
                     }
                 }
                 Constant.TYPE_FOLLOWING -> {
@@ -52,9 +53,20 @@ class FollowFragment : Fragment() {
 
                     viewModel.followingResponse.observe(viewLifecycleOwner) {
                         setUpFollowingRV(it)
+                        if(it == null) showLoading(true) else showLoading(false)
                     }
                 }
             }
+        }
+    }
+
+    private fun showLoading(loading: Boolean){
+        if (loading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.rvFollow.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.rvFollow.visibility = View.VISIBLE
         }
     }
 
