@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.search.ItemsItem
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.databinding.ItemGithubUserBinding
@@ -38,7 +39,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                 setOnClickListener {
                     context.startActivity(
                         Intent(context, DetailActivity::class.java)
-                            .putExtra(DetailActivity.EXTRA_DETAIL, listUser[position].login)
+                            .putExtra(Constant.EXTRA_DETAIL, listUser[position].login)
                     )
                 }
             }

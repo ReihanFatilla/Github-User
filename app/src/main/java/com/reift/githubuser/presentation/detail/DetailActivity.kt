@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.reift.githubuser.R
+import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.model.User
@@ -31,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
 
         _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
 
-        viewModel.getUserDetail(intent.getStringExtra(EXTRA_DETAIL).toString())
+        viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString())
         viewModel.detailResponse.observe(this){
             _user = it
             setUpDetailView()
@@ -93,9 +94,5 @@ class DetailActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
-    }
-
-    companion object {
-        const val EXTRA_DETAIL = "INTENT_EXTRA_DETAIL"
     }
 }
