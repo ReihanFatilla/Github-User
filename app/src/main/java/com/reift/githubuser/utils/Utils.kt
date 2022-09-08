@@ -11,4 +11,20 @@ object Utils {
                 "Total ${user.repository} Repositories\n" +
                 "${user.follower} Followers & ${user.following} Following"
     }
+
+    val listRandomName = arrayListOf(
+        "Reihan",
+        "Richard",
+        "Naufal",
+        "Fathan",
+        "Devin",
+        "Reyhan",
+        "Saleh",
+        "Alif",
+        "Azzam",
+        "Danish",
+        "Haydar",
+        "Miqdad"
+    ).shuffled()[0]
+
 }

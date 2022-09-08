@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.reift.githubuser.data.network.response.search.ItemsItem
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.databinding.ItemGithubUserBinding
 import com.reift.githubuser.model.User
+import com.reift.githubuser.utils.Utils
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    var listUser = ArrayList<User>()
+    var listUser = ArrayList<ItemsItem>()
 
-    fun setData(list: List<User>){
+    fun setData(list: List<ItemsItem>){
         listUser.clear()
         listUser.addAll(list)
     }
@@ -27,10 +29,9 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         holder.apply {
             binding.apply {
                 with(listUser[position]){
-                    tvName.text = name
-                    tvUsername.text = username
+                    tvName.text = login
                     Glide.with(imgUser.context)
-                        .load(avatar)
+                        .load(avatarUrl)
                         .into(imgUser)
                 }
             }
@@ -39,7 +40,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                 setOnClickListener {
                     context.startActivity(
                         Intent(context, DetailActivity::class.java)
-                            .putExtra(DetailActivity.EXTRA_DETAIL, listUser[position])
+                            .putExtra(DetailActivity.EXTRA_DETAIL, listUser[position].login)
                     )
                 }
             }
