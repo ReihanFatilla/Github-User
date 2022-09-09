@@ -4,14 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.detail.fragment.FollowFragment"
-    android:background="@color/card_background"
+    android:background="@color/app_backround"
     >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_follow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         tools:listitem="@layout/item_follow"/>
 
     <ProgressBar

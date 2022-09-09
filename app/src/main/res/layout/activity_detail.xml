@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.detail.DetailActivity"
-    android:background="@color/card_background"
+    android:background="@color/app_backround"
     >
 
         <com.google.android.material.appbar.AppBarLayout
@@ -246,6 +246,7 @@
             app:layout_constraintTop_toBottomOf="@id/tab_follow"
             android:isScrollContainer="false"
             />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

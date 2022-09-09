@@ -48,7 +48,7 @@ class FollowFragment : Fragment() {
 
                     viewModel.followersResponse.observe(viewLifecycleOwner) {
                         setUpFollowersRV(it)
-                        if(it == null) showLoading(true) else showLoading(false)
+                        if(it.isNullOrEmpty()) showLoading(true) else showLoading(false)
                     }
                 }
                 Constant.TYPE_FOLLOWING -> {
@@ -56,7 +56,7 @@ class FollowFragment : Fragment() {
 
                     viewModel.followingResponse.observe(viewLifecycleOwner) {
                         setUpFollowingRV(it)
-                        if(it == null) showLoading(true) else showLoading(false)
+                        if(it.isNullOrEmpty()) showLoading(true) else showLoading(false)
                     }
                 }
             }
