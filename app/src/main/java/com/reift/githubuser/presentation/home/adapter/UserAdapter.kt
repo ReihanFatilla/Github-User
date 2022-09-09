@@ -1,4 +1,4 @@
-package com.reift.githubuser.presentation.main.adapter
+package com.reift.githubuser.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
