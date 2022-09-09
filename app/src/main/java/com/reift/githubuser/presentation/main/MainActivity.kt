@@ -1,13 +1,11 @@
 package com.reift.githubuser.presentation.main
 
-import android.app.SearchManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.githubuser.databinding.ActivityMainBinding
 import com.reift.githubuser.presentation.main.adapter.UserAdapter

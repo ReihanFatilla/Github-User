@@ -1,6 +1,5 @@
 package com.reift.githubuser.presentation.detail.fragment
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.FragmentFollowBinding
@@ -39,6 +37,7 @@ class FollowFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
+
         val type = arguments?.getString(Constant.BUNDLE_FOLLOW)
         val username = arguments?.getString(Constant.BUNDLE_USERNAME)
 

@@ -6,8 +6,6 @@
     <string name="location_icon">Location Icon</string>
     <string name="company_icon">Company Icon</string>
     <string name="share">share</string>
-    <string name="button_arrow">Button Arrow</string>
-    <string name="see_details">See Details</string>
     <string name="following">Following</string>
-    <string name="search">Search</string>
+    <string name="button_arrow">Button Arrow</string>
 </resources>
