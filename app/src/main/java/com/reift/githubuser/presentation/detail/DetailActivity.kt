@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -33,11 +34,16 @@ class DetailActivity : AppCompatActivity() {
 
         _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
 
+        showLoading(true)
+
         viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString())
         viewModel.detailResponse.observe(this){
-            _user = it
-            setUpDetailView()
-            setUpViewPager()
+            if (it.avatarUrl.isNotEmpty()){
+                showLoading(false)
+                _user = it
+                setUpDetailView()
+                setUpViewPager()
+            }
         }
 
         setUpToolbar()
@@ -107,5 +113,17 @@ class DetailActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    private fun showLoading(loading: Boolean){
+        if (loading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.constraintDetail.visibility = View.INVISIBLE
+            binding.constraintFollow.visibility = View.INVISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.constraintDetail.visibility = View.VISIBLE
+            binding.constraintFollow.visibility = View.VISIBLE
+        }
     }
 }
