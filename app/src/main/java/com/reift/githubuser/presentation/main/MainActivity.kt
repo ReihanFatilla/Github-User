@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText != null) {
+                        showLoading(true)
                         searchResultMsg = "Search result for \"$newText\""
                         binding.tvSearchResult.text = searchResultMsg
                     }
@@ -82,7 +83,11 @@ class MainActivity : AppCompatActivity() {
                     })
 
                 }
-            } else showLoading(true)
+            } else {
+                showLoading(true)
+                val errorSearchMsg = "No result for \"${binding.svGithubUser.query}\""
+                binding.tvSearchResult.text = errorSearchMsg
+            }
         }
     }
 

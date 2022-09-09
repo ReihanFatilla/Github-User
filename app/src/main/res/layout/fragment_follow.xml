@@ -11,6 +11,7 @@
         android:id="@+id/rv_follow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
         tools:listitem="@layout/item_follow"/>
 
     <ProgressBar
