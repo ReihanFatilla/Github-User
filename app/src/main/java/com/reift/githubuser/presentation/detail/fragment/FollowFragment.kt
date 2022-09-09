@@ -1,5 +1,6 @@
 package com.reift.githubuser.presentation.detail.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +11,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.FragmentFollowBinding
+import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.detail.DetailViewModel
 import com.reift.githubuser.presentation.detail.fragment.adapter.FollowersAdapter
 import com.reift.githubuser.presentation.detail.fragment.adapter.FollowingAdapter
+import com.reift.githubuser.utils.OnItemClickCallback
 
 
 class FollowFragment : Fragment() {
 
     private var _viewModel: DetailViewModel? = null
-    private val viewModel get() = _viewModel!!
+    private val viewModel get() = _viewModel as DetailViewModel
 
     private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding as FragmentFollowBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,6 +83,15 @@ class FollowFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter
                 mAdapter.setData(following)
+
+                mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                    override fun onItemClicked(username: String) {
+                        startActivity(
+                            Intent(context, DetailActivity::class.java)
+                                .putExtra(Constant.EXTRA_DETAIL, username)
+                        )
+                    }
+                })
             }
         }
     }
@@ -91,6 +103,15 @@ class FollowFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter
                 mAdapter.setData(followers)
+
+                mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                    override fun onItemClicked(username: String) {
+                        startActivity(
+                            Intent(context, DetailActivity::class.java)
+                                .putExtra(Constant.EXTRA_DETAIL, username)
+                        )
+                    }
+                })
             }
         }
     }

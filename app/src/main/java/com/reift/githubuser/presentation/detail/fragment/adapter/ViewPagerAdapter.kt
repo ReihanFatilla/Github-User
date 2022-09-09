@@ -8,7 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.presentation.detail.fragment.FollowFragment
 
-class ViewPagerAdapter(fa: FragmentActivity, val username: String) : FragmentStateAdapter(fa) {
+class ViewPagerAdapter(fa: FragmentActivity, private val username: String) : FragmentStateAdapter(fa) {
 
     override fun getItemCount() = 2
 

@@ -1,23 +1,26 @@
 package com.reift.githubuser.presentation.main
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.databinding.ActivityMainBinding
+import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.main.adapter.UserAdapter
+import com.reift.githubuser.utils.OnItemClickCallback
 import com.reift.githubuser.utils.Utils
 
 class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding as ActivityMainBinding
 
     private var _viewModel: MainViewModel? = null
-    private val viewModel get() = _viewModel!!
+    private val viewModel get() = _viewModel as MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +71,16 @@ class MainActivity : AppCompatActivity() {
                     layoutManager = LinearLayoutManager(applicationContext)
                     adapter = mAdapter
                     setHasFixedSize(true)
-                    Log.i("setUpRecyclerViewAsd", "setUpRecyclerView: $it")
+
+                    mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
+                        override fun onItemClicked(username: String) {
+                            startActivity(
+                                Intent(applicationContext, DetailActivity::class.java)
+                                    .putExtra(Constant.EXTRA_DETAIL, username)
+                            )
+                        }
+                    })
+
                 }
             } else showLoading(true)
         }

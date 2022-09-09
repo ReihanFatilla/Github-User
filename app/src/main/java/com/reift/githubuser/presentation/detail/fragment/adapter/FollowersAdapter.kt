@@ -1,18 +1,21 @@
 package com.reift.githubuser.presentation.detail.fragment.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.ItemFollowBinding
-import com.reift.githubuser.presentation.detail.DetailActivity
+import com.reift.githubuser.utils.OnItemClickCallback
 
 class FollowersAdapter: RecyclerView.Adapter<FollowersAdapter.FollowViewHolder>() {
 
-    var listFollowers = ArrayList<FollowResponse>()
+    private var listFollowers = ArrayList<FollowResponse>()
+
+    private var onItemClickCallBack: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallBack = onItemClickCallback
+    }
 
     fun setData(list: List<FollowResponse>){
         listFollowers.clear()
@@ -25,23 +28,19 @@ class FollowersAdapter: RecyclerView.Adapter<FollowersAdapter.FollowViewHolder>(
         FollowViewHolder(ItemFollowBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: FollowViewHolder, position: Int) {
-        holder.apply {
-            binding.apply {
-                with(listFollowers[position]){
+        with(listFollowers[position]) {
+            holder.apply {
+                binding.apply {
+
                     tvName.text = login
-                    Glide.with(imgUser.context)
+                    com.bumptech.glide.Glide.with(imgUser.context)
                         .load(avatarUrl)
                         .override(300, 300)
                         .into(imgUser)
                 }
-            }
 
-            itemView.apply {
-                setOnClickListener {
-                    context.startActivity(
-                        Intent(context, DetailActivity::class.java)
-                            .putExtra(Constant.EXTRA_DETAIL, listFollowers[position].login)
-                    )
+                itemView.setOnClickListener {
+                    onItemClickCallBack?.onItemClicked(login)
                 }
             }
         }

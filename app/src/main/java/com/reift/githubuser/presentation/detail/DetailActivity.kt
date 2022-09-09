@@ -18,13 +18,13 @@ import com.reift.githubuser.utils.Utils
 class DetailActivity : AppCompatActivity() {
 
     private var _binding: ActivityDetailBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding as ActivityDetailBinding
 
     private var _viewModel: DetailViewModel? = null
     private val viewModel get() = _viewModel!!
 
     private var _user: DetailResponse? = null
-    private val user get() = _user!!
+    private val user get() = _user as DetailResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
