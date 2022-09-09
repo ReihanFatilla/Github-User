@@ -35,5 +35,4 @@ data class DetailResponse(
 
 	@field:SerializedName("location")
 	val location: String? = "none"
-
 )

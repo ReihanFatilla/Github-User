@@ -1,11 +1,14 @@
 package com.reift.githubuser.data.local.room
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 @Entity
+@Parcelize
 data class UserEntity (
 
     @ColumnInfo(name = "login")
@@ -32,4 +35,4 @@ data class UserEntity (
     @ColumnInfo(name = "location")
     val location: String
 
-)
+): Parcelable

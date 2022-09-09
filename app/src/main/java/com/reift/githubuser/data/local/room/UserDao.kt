@@ -10,12 +10,12 @@ interface UserDao {
     fun getFavoriteList(): LiveData<List<UserEntity>>
 
     @Insert
-    suspend fun insertFavorite(user: UserEntity)
+    fun insertFavorite(user: UserEntity)
 
     @Update
-    suspend fun updateFavorite(user: UserEntity)
+    fun updateFavorite(user: UserEntity)
 
     @Delete
-    suspend fun removeFavorite(user: UserEntity)
+    fun deleteFavorite(user: UserEntity)
 
 }
