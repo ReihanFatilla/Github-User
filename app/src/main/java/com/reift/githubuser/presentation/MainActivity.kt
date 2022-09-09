@@ -1,4 +1,4 @@
-package com.reift.githubuser.presentation.main
+package com.reift.githubuser.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.databinding.ActivityMainBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
-import com.reift.githubuser.presentation.main.adapter.UserAdapter
+import com.reift.githubuser.presentation.home.HomeViewModel
+import com.reift.githubuser.presentation.home.adapter.UserAdapter
 import com.reift.githubuser.utils.OnItemClickCallback
 import com.reift.githubuser.utils.Utils
 
@@ -19,15 +20,15 @@ class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding as ActivityMainBinding
 
-    private var _viewModel: MainViewModel? = null
-    private val viewModel get() = _viewModel as MainViewModel
+    private var _viewModel: HomeViewModel? = null
+    private val viewModel get() = _viewModel as HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        _viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         setUpSearchView()
         setUpRecyclerView()
