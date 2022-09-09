@@ -23,7 +23,7 @@
             android:name="com.reift.githubuser.presentation.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name="com.reift.githubuser.presentation.main.MainActivity"
+            android:name="com.reift.githubuser.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
