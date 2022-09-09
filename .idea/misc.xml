@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/item_github_user.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/menu/detail_menu.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.28125" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.28125" />
       </map>
     </option>
   </component>
