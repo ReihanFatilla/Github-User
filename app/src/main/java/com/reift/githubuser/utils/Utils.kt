@@ -1,7 +1,6 @@
 package com.reift.githubuser.utils
 
 import com.reift.githubuser.data.network.response.detail.DetailResponse
-import com.reift.githubuser.model.User
 
 object Utils {
     fun getShareMessage(user: DetailResponse): String{

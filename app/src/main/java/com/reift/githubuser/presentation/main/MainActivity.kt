@@ -1,14 +1,16 @@
 package com.reift.githubuser.presentation.main
 
+import android.app.SearchManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.githubuser.presentation.main.adapter.UserAdapter
 import com.reift.githubuser.databinding.ActivityMainBinding
+import com.reift.githubuser.presentation.main.adapter.UserAdapter
 import com.reift.githubuser.utils.Utils
 
 class MainActivity : AppCompatActivity() {
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     if (query != null) {
                         viewModel.searchByUsername(query)
+                        clearFocus()
                     }
                     return true
                 }
@@ -50,26 +53,37 @@ class MainActivity : AppCompatActivity() {
                     if (newText != null) {
                         searchResultMsg = "Search result for \"$newText\""
                         binding.tvSearchResult.text = searchResultMsg
-                        viewModel.searchByUsername(newText)
                     }
                     return true
                 }
             })
         }
-
     }
 
     private fun setUpRecyclerView() {
         viewModel.userResponse.observe(this@MainActivity) {
-            if(it != null){
+            if(!it.isNullOrEmpty()){
+                showLoading(false)
                 binding.rvGithubUser.apply {
                     val mAdapter = UserAdapter()
                     mAdapter.setData(it)
-                    layoutManager = GridLayoutManager(applicationContext, 2)
+                    layoutManager = LinearLayoutManager(applicationContext)
                     adapter = mAdapter
                     setHasFixedSize(true)
+                    Log.i("setUpRecyclerViewAsd", "setUpRecyclerView: $it")
                 }
-            }
+            } else showLoading(true)
         }
     }
+
+    private fun showLoading(loading: Boolean){
+        if (loading) {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.rvGithubUser.visibility = View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
+            binding.rvGithubUser.visibility = View.VISIBLE
+        }
+    }
+
 }

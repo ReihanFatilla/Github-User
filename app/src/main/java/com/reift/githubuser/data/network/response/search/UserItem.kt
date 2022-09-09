@@ -2,7 +2,7 @@ package com.reift.githubuser.data.network.response.search
 
 import com.google.gson.annotations.SerializedName
 
-data class ItemsItem(
+data class UserItem(
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String,

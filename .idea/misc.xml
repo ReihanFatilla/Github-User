@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/bg_searchview.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bg_tab_item.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/color_cursor.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable/custom_progressbar.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_share.xml" value="0.155" />
@@ -18,6 +19,7 @@
         <entry key="app/src/main/res/layout/item_follow.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/item_github_user.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/menu/detail_menu.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.28125" />
       </map>
     </option>
   </component>

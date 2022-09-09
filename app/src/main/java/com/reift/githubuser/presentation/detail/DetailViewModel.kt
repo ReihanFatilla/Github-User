@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.reift.githubuser.data.UserRepository
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.follow.FollowResponse
-import com.reift.githubuser.data.network.response.search.ItemsItem
 
 class DetailViewModel: ViewModel() {
     private val repository = UserRepository()

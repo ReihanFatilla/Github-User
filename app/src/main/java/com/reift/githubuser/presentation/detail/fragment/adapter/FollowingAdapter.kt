@@ -31,6 +31,7 @@ class FollowingAdapter: RecyclerView.Adapter<FollowingAdapter.FollowViewHolder>(
                     tvName.text = login
                     Glide.with(imgUser.context)
                         .load(avatarUrl)
+                        .override(300, 300)
                         .into(imgUser)
                 }
             }

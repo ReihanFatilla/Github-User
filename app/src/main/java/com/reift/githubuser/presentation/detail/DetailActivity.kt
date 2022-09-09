@@ -12,7 +12,6 @@ import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
-import com.reift.githubuser.model.User
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
 import com.reift.githubuser.utils.Utils
 
@@ -74,6 +73,7 @@ class DetailActivity : AppCompatActivity() {
 
                 Glide.with(applicationContext)
                     .load(avatarUrl)
+                    .override(500, 500)
                     .into(imgUser)
 
             }

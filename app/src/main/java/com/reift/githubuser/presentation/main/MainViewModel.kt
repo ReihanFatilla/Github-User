@@ -3,13 +3,12 @@ package com.reift.githubuser.presentation.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.reift.githubuser.data.UserRepository
-import com.reift.githubuser.data.network.response.search.ItemsItem
-import com.reift.githubuser.data.network.response.search.UserResponse
+import com.reift.githubuser.data.network.response.search.UserItem
 
 class MainViewModel: ViewModel() {
     private val repository = UserRepository()
 
-    val userResponse = MutableLiveData<List<ItemsItem>>()
+    val userResponse = MutableLiveData<List<UserItem>>()
 
     fun searchByUsername(username: String){
         repository.searchByUsername(
