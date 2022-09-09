@@ -38,7 +38,7 @@ class DetailActivity : AppCompatActivity() {
 
         viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString())
         viewModel.detailResponse.observe(this){
-            if (it.avatarUrl.isNotEmpty()){
+            if (it != null && it.avatarUrl.isNotEmpty()){
                 showLoading(false)
                 _user = it
                 setUpDetailView()

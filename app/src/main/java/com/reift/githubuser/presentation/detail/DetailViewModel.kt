@@ -1,17 +1,19 @@
 package com.reift.githubuser.presentation.detail
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.reift.githubuser.data.UserRepository
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 
-class DetailViewModel: ViewModel() {
-    private val repository = UserRepository()
+class DetailViewModel(application: Application): AndroidViewModel(application) {
+    private val repository = UserRepository(application)
 
-    val detailResponse = MutableLiveData<DetailResponse>()
-    val followingResponse = MutableLiveData<List<FollowResponse>>()
-    val followersResponse = MutableLiveData<List<FollowResponse>>()
+    val detailResponse = MutableLiveData<DetailResponse?>()
+    val followingResponse = MutableLiveData<List<FollowResponse>?>()
+    val followersResponse = MutableLiveData<List<FollowResponse>?>()
 
     fun getUserDetail(username: String){
         repository.getUserDetail(
