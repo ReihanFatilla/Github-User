@@ -6,7 +6,11 @@ import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.databinding.ActivityMainBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
@@ -24,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val navController = findNavController(R.id.fragmemt_container)
+        binding.bottomNavBar.setupWithNavController(navController)
     }
 
 }

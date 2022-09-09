@@ -10,6 +10,8 @@ import kotlinx.parcelize.Parcelize
 @Entity
 @Parcelize
 data class UserEntity (
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
 
     @ColumnInfo(name = "login")
     val login: String,
