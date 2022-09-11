@@ -1,10 +1,11 @@
-package com.reift.githubuser.presentation
+package com.reift.githubuser.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
+import com.reift.githubuser.data.local.datastore.ThemeRepository
 import com.reift.githubuser.databinding.ActivityMainBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.home.HomeViewModel
@@ -23,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding as ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.fragmemt_container)
         binding.bottomNavBar.setupWithNavController(navController)
+
     }
+
 
 }

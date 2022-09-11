@@ -1,7 +1,6 @@
 package com.reift.githubuser.data
 
 import android.content.Context
-import com.reift.githubuser.data.local.datastore.ThemePreferences
 import com.reift.githubuser.data.local.room.UserDB
 import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.network.ApiConfig

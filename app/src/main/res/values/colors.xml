@@ -4,7 +4,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#AAAAAA</color>
 
     <color name="primary_color">#007AFF</color>
 
@@ -12,5 +11,21 @@
     <color name="app_backround">#171717</color>
     <color name="bottomnav_background">#171717</color>
     <color name="detail_icon">#9A9A9A</color>
+    <color name="gray">#AAAAAA</color>
+
+<!--    Dark theme-->
+    <color name="card_background_dark">#262626</color>
+    <color name="app_backround_dark">#171717</color>
+    <color name="bottomnav_background_dark">#171717</color>
+    <color name="detail_icon_dark">#9A9A9A</color>
+    <color name="gray_dark">#AAAAAA</color>
+
+<!--    Light Theme-->
+    <color name="card_background_light">#A6A6A6</color>
+    <color name="app_backround_light">#F1F1F1</color>
+    <color name="bottomnav_background_light">#D5D5D5</color>
+    <color name="detail_icon_light">#323232</color>
+    <color name="gray_light">#737373</color>
+
 
 </resources>

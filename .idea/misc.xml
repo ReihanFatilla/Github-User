@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/logo_github.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/nav_item_color.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/switch_color.xml" value="0.1415" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_follow.xml" value="0.28229166666666666" />

@@ -1,16 +1,31 @@
 package com.reift.githubuser.data.local.datastore
 
-import com.reift.githubuser.data.local.datastore.ThemePreferences
-import com.reift.githubuser.data.local.room.UserDao
-import com.reift.githubuser.data.local.room.UserEntity
+import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.preferencesDataStore
+import com.reift.githubuser.constant.Constant
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
-class ThemeRepository private constructor(
-    private val userDao: UserDao,
-    private val themePreference: ThemePreferences
+class ThemeRepository(
+    context: Context
 ) {
 
-    fun getThemeSetting() = themePreference.getThemeSetting()
+    private val Context.dataStore by preferencesDataStore(Constant.PREF_SETTINGS)
+    private val THEME_KEY = booleanPreferencesKey(Constant.PREF_THEME)
+    private val settingDataStore = context.dataStore
 
-    suspend fun saveThemeSetting(isDarkMode: Boolean) = themePreference.saveThemeSetting(isDarkMode)
+    fun getThemeSetting(): Flow<Boolean> {
+        return settingDataStore.data.map {
+            it[THEME_KEY] ?: false
+        }
+    }
+
+    suspend fun saveThemeSetting(isDarkMode: Boolean) {
+        settingDataStore.edit {
+            it[THEME_KEY] = isDarkMode
+        }
+    }
 
 }
