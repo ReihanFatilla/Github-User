@@ -13,8 +13,7 @@ import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.FragmentFollowBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.detail.DetailViewModel
-import com.reift.githubuser.presentation.detail.fragment.adapter.FollowersAdapter
-import com.reift.githubuser.presentation.detail.fragment.adapter.FollowingAdapter
+import com.reift.githubuser.presentation.detail.fragment.adapter.FollowAdapter
 import com.reift.githubuser.utils.OnItemClickCallback
 
 
@@ -79,7 +78,7 @@ class FollowFragment : Fragment() {
     private fun setUpFollowingRV(following: List<FollowResponse>?) {
         if (following != null) {
             binding.rvFollow.apply {
-                val mAdapter = FollowingAdapter()
+                val mAdapter = FollowAdapter()
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter
                 mAdapter.setData(following)
@@ -99,7 +98,7 @@ class FollowFragment : Fragment() {
     private fun setUpFollowersRV(followers: List<FollowResponse>?) {
         if (followers != null) {
             binding.rvFollow.apply {
-                val mAdapter = FollowersAdapter()
+                val mAdapter = FollowAdapter()
                 layoutManager = LinearLayoutManager(context)
                 adapter = mAdapter
                 mAdapter.setData(followers)

@@ -1,6 +1,7 @@
 package com.reift.githubuser.data
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import com.reift.githubuser.data.local.room.UserDB
 import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.local.sharedpref.PreferenceHelper
@@ -35,6 +36,8 @@ class UserRepository(
     fun insertFollowing(user: UserEntity) = userDao.insertFollowing(user)
 
     fun deleteFollowing(user: UserEntity) = userDao.deleteFollowing(user)
+
+    fun getFollowList(): LiveData<List<UserEntity>> = userDao.getFollowList()
 
     fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.searchByUsername(username)
