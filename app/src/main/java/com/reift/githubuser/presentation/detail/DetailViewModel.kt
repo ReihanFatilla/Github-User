@@ -16,23 +16,23 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     val followingResponse = MutableLiveData<List<FollowResponse>?>()
     val followersResponse = MutableLiveData<List<FollowResponse>?>()
 
-    fun insertFavorite(user: UserEntity) {
+    fun insertFollowing(user: UserEntity) {
         repository.insertFollowing(user)
     }
 
-    fun deleteFavorite(user: UserEntity) {
+    fun deleteFollowing(user: UserEntity) {
         repository.deleteFollowing(user)
     }
 
-    fun saveUserPref(key: String, value: Boolean){
+    fun saveFollowingStatus(key: String, value: Boolean){
         repository.put(key, value)
     }
 
-    fun removeUserPref(key: String){
+    fun removeFollowingStatus(key: String){
         repository.remove(key)
     }
 
-    fun getBooleanPref(key: String): Boolean {
+    fun getFollowStatus(key: String): Boolean {
         return repository.getBoolean(key)
     }
 

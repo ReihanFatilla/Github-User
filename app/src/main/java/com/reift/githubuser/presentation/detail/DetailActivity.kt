@@ -14,6 +14,7 @@ import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
+import com.reift.githubuser.utils.DataMapper
 import com.reift.githubuser.utils.Utils
 
 class DetailActivity : AppCompatActivity() {
@@ -43,10 +44,28 @@ class DetailActivity : AppCompatActivity() {
                 _user = it
                 setUpDetailView()
                 setUpViewPager()
+                setUpFollowFeature()
             }
         }
 
         setUpToolbar()
+    }
+
+    private fun setUpFollowFeature() {
+        val isFollowing = viewModel.getFollowStatus(user.login)
+        if(isFollowing) unFollowButtonMode()
+
+        val userEntity = DataMapper.detailResponseToEntity(user)
+
+        binding.btnFollow.setOnClickListener {
+            if(isFollowing){
+                viewModel.insertFollowing(userEntity)
+                viewModel.saveFollowingStatus(user.login, true)
+            } else if(!isFollowing){
+                viewModel.deleteFollowing(userEntity)
+                viewModel.removeFollowingStatus(user.login)
+            }
+        }
     }
 
     private fun setUpViewPager() {
@@ -124,6 +143,20 @@ class DetailActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             binding.constraintDetail.visibility = View.VISIBLE
             binding.constraintFollow.visibility = View.VISIBLE
+        }
+    }
+
+    private fun followButtonMode(){
+        binding.apply {
+            btnFollow.setCardBackgroundColor(resources.getColor(R.color.primary_color))
+            tvFollowStatus.text = resources.getString(R.string.follow)
+        }
+    }
+
+    private fun unFollowButtonMode(){
+        binding.apply {
+            btnFollow.setCardBackgroundColor(resources.getColor(R.color.card_background))
+            tvFollowStatus.text = resources.getString(R.string.unfollow)
         }
     }
 }
