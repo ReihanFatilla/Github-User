@@ -40,7 +40,7 @@ class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
                 }
 
                 itemView.setOnClickListener {
-                    onItemClickCallBack?.onItemClicked(login)
+                    onItemClickCallBack?.onItemClicked(login, position)
                 }
             }
         }

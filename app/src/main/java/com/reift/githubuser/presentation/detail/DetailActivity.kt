@@ -11,7 +11,9 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
+import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.network.response.detail.DetailResponse
+import com.reift.githubuser.data.network.response.search.UserItem
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
 import com.reift.githubuser.utils.DataMapper
@@ -37,6 +39,22 @@ class DetailActivity : AppCompatActivity() {
 
         _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
 
+        if(intent.getBooleanExtra(Constant.EXTRA_IS_ONLINE, false)){
+            onlineDetail()
+        } else {
+            offlineDetail()
+        }
+
+        setUpToolbar()
+    }
+
+    private fun offlineDetail() {
+        val intentUser = intent.getParcelableExtra<UserEntity>(Constant.EXTRA_DETAIL_OBJECT)
+        _user = intentUser?.let { DataMapper.mapEntityToResponse(it) }
+        setUpDetailView()
+    }
+
+    private fun onlineDetail() {
         viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString())
         viewModel.detailResponse.observe(this){
             if (it != null && it.avatarUrl.isNotEmpty()){
@@ -47,8 +65,6 @@ class DetailActivity : AppCompatActivity() {
                 setUpFollowFeature()
             }
         }
-
-        setUpToolbar()
     }
 
     private fun setUpFollowFeature() {

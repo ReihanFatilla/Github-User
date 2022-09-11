@@ -31,4 +31,23 @@ object DataMapper {
             )
         }
     }
+
+    fun mapEntityToResponse(input: UserEntity): DetailResponse{
+        return with(input){
+            DetailResponse(
+                "",
+                login,
+                company,
+                publicRepos,
+                htmlUrl,
+                "",
+                "",
+                followers,
+                avatarUrl,
+                following,
+                name,
+                location
+            )
+        }
+    }
 }

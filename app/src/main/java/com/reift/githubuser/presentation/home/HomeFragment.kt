@@ -105,6 +105,7 @@ class HomeFragment : Fragment() {
                             startActivity(
                                 Intent(context, DetailActivity::class.java)
                                     .putExtra(Constant.EXTRA_DETAIL, username)
+                                    .putExtra(Constant.EXTRA_IS_ONLINE, true)
                             )
                         }
                     })

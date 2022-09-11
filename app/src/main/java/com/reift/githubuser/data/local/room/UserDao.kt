@@ -9,7 +9,7 @@ interface UserDao {
     @Query("SELECT * FROM UserEntity")
     fun getFollowList(): LiveData<List<UserEntity>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFollowing(user: UserEntity)
 
     @Delete
