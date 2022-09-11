@@ -13,4 +13,6 @@
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="follow">Follow</string>
+    <string name="unfollow">Unfollow</string>
 </resources>
