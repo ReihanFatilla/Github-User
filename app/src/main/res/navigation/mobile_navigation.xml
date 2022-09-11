@@ -6,7 +6,7 @@
     app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/nav_favorite"
+        android:id="@+id/nav_following"
         android:name="com.reift.githubuser.presentation.favorite.FollowingFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_following" />

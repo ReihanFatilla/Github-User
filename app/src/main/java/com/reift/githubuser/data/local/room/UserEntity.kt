@@ -22,6 +22,9 @@ data class UserEntity (
     @ColumnInfo(name = "public_repos")
     val publicRepos: Int,
 
+    @ColumnInfo(name = "html_url")
+    val htmlUrl: String,
+
     @ColumnInfo(name = "followers")
     val followers: Int,
 

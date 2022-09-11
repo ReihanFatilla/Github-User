@@ -15,6 +15,9 @@ data class DetailResponse(
 	@field:SerializedName("public_repos")
 	val publicRepos: Int,
 
+	@field:SerializedName("html_url")
+	val htmlUrl: String,
+
 	@field:SerializedName("gravatar_id")
 	val gravatarId: String,
 

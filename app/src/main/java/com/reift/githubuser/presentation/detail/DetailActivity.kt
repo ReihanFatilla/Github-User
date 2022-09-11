@@ -55,13 +55,13 @@ class DetailActivity : AppCompatActivity() {
         val isFollowing = viewModel.getFollowStatus(user.login)
         if(isFollowing) unFollowButtonMode()
 
-        val userEntity = DataMapper.detailResponseToEntity(user)
+        val userEntity = DataMapper.mapResponseToEntity(user)
 
         binding.btnFollow.setOnClickListener {
-            if(isFollowing){
+            if(!isFollowing){
                 viewModel.insertFollowing(userEntity)
                 viewModel.saveFollowingStatus(user.login, true)
-            } else if(!isFollowing){
+            } else if(isFollowing){
                 viewModel.deleteFollowing(userEntity)
                 viewModel.removeFollowingStatus(user.login)
             }

@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.githubuser.R
 import com.reift.githubuser.databinding.FragmentFollowingBinding
+import com.reift.githubuser.presentation.home.adapter.UserAdapter
+import com.reift.githubuser.utils.DataMapper
 
 class FollowingFragment : Fragment() {
 
@@ -29,7 +32,15 @@ class FollowingFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-
+        viewmodel.getFollowList().observe(viewLifecycleOwner){
+            binding.rvFollowingList.apply {
+                val mAdapter = UserAdapter()
+                layoutManager = LinearLayoutManager(context)
+                adapter = mAdapter
+                val userItem = DataMapper.mapListEntityToResponse(it)
+                mAdapter.setData(userItem)
+            }
+        }
     }
 
 }
