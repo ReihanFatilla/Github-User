@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
                     setHasFixedSize(true)
 
                     mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                        override fun onItemClicked(username: String) {
+                        override fun onItemClicked(username: String, position: Int) {
                             startActivity(
                                 Intent(context, DetailActivity::class.java)
                                     .putExtra(Constant.EXTRA_DETAIL, username)

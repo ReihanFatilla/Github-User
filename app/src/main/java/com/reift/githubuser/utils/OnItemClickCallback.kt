@@ -1,5 +1,5 @@
 package com.reift.githubuser.utils
 
 interface OnItemClickCallback {
-    fun onItemClicked(username: String)
+    fun onItemClicked(username: String, position: Int)
 }

@@ -47,7 +47,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                 }
 
                 itemView.setOnClickListener {
-                    onItemClickCallBack?.onItemClicked(login)
+                    onItemClickCallBack?.onItemClicked(login, position)
                 }
             }
         }
