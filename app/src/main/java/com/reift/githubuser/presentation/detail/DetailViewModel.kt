@@ -15,6 +15,19 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     val followingResponse = MutableLiveData<List<FollowResponse>?>()
     val followersResponse = MutableLiveData<List<FollowResponse>?>()
 
+    fun saveUserPref(key: String, value: Boolean){
+        repository.put(key, value)
+    }
+
+    fun removeUserPref(key: String){
+        repository.remove(key)
+    }
+
+    fun getBooleanPref(key: String): Boolean {
+        return repository.getBoolean(key)
+    }
+
+
     fun getUserDetail(username: String){
         repository.getUserDetail(
             username,

@@ -3,6 +3,7 @@ package com.reift.githubuser.data
 import android.content.Context
 import com.reift.githubuser.data.local.room.UserDB
 import com.reift.githubuser.data.local.room.UserEntity
+import com.reift.githubuser.data.local.sharedpref.PreferenceHelper
 import com.reift.githubuser.data.network.ApiConfig
 import com.reift.githubuser.data.network.ApiService
 import com.reift.githubuser.data.network.response.detail.DetailResponse
@@ -17,6 +18,19 @@ class UserRepository(
 
     private val apiService: ApiService = ApiConfig.getApiService()
     private val userDao = UserDB.getInstance(context).userDao()
+    private val pref = PreferenceHelper(context)
+
+    fun put(key: String, value: Boolean){
+        pref.put(key, value)
+    }
+
+    fun remove(key: String){
+        pref.remove(key)
+    }
+
+    fun getBoolean(key: String): Boolean {
+        return pref.getBoolean(key)
+    }
 
     fun insertFavorite(user: UserEntity) = userDao.insertFavorite(user)
 
