@@ -7,15 +7,12 @@ import androidx.room.*
 interface UserDao {
 
     @Query("SELECT * FROM UserEntity")
-    fun getFavoriteList(): LiveData<List<UserEntity>>
+    fun getFollowList(): LiveData<List<UserEntity>>
 
     @Insert
-    fun insertFavorite(user: UserEntity)
-
-    @Update
-    fun updateFavorite(user: UserEntity)
+    fun insertFollowing(user: UserEntity)
 
     @Delete
-    fun deleteFavorite(user: UserEntity)
+    fun deleteFollowing(user: UserEntity)
 
 }

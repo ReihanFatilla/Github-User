@@ -32,11 +32,9 @@ class UserRepository(
         return pref.getBoolean(key)
     }
 
-    fun insertFavorite(user: UserEntity) = userDao.insertFavorite(user)
+    fun insertFollowing(user: UserEntity) = userDao.insertFollowing(user)
 
-    fun deleteFavorite(user: UserEntity) = userDao.deleteFavorite(user)
-
-    fun updateFavorite(user: UserEntity) = userDao.updateFavorite(user)
+    fun deleteFollowing(user: UserEntity) = userDao.deleteFollowing(user)
 
     fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.searchByUsername(username)
