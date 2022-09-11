@@ -10,9 +10,9 @@ interface UserDao {
     fun getFollowList(): LiveData<List<UserEntity>>
 
     @Insert
-    fun insertFollowing(user: UserEntity)
+    suspend fun insertFollowing(user: UserEntity)
 
     @Delete
-    fun deleteFollowing(user: UserEntity)
+    suspend fun deleteFollowing(user: UserEntity)
 
 }

@@ -33,9 +33,9 @@ class UserRepository(
         return pref.getBoolean(key)
     }
 
-    fun insertFollowing(user: UserEntity) = userDao.insertFollowing(user)
+    suspend fun insertFollowing(user: UserEntity) = userDao.insertFollowing(user)
 
-    fun deleteFollowing(user: UserEntity) = userDao.deleteFollowing(user)
+    suspend fun deleteFollowing(user: UserEntity) = userDao.deleteFollowing(user)
 
     fun getFollowList(): LiveData<List<UserEntity>> = userDao.getFollowList()
 

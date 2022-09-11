@@ -61,9 +61,11 @@ class DetailActivity : AppCompatActivity() {
             if(!isFollowing){
                 viewModel.insertFollowing(userEntity)
                 viewModel.saveFollowingStatus(user.login, true)
+                unFollowButtonMode()
             } else if(isFollowing){
                 viewModel.deleteFollowing(userEntity)
                 viewModel.removeFollowingStatus(user.login)
+                followButtonMode()
             }
         }
     }

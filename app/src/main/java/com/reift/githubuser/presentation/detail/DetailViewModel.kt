@@ -4,10 +4,14 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.reift.githubuser.data.UserRepository
 import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.follow.FollowResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
     private val repository = UserRepository(application)
@@ -17,11 +21,15 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     val followersResponse = MutableLiveData<List<FollowResponse>?>()
 
     fun insertFollowing(user: UserEntity) {
-        repository.insertFollowing(user)
+        viewModelScope.launch(Dispatchers.IO){
+            repository.insertFollowing(user)
+        }
     }
 
     fun deleteFollowing(user: UserEntity) {
-        repository.deleteFollowing(user)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFollowing(user)
+        }
     }
 
     fun saveFollowingStatus(key: String, value: Boolean){
