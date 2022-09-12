@@ -2,7 +2,6 @@ package com.reift.githubuser.presentation.detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,10 +14,8 @@ import com.reift.githubuser.R
 import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.network.response.detail.DetailResponse
-import com.reift.githubuser.data.network.response.search.UserItem
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
-import com.reift.githubuser.presentation.favorite.FollowingFragment
 import com.reift.githubuser.utils.DataMapper
 import com.reift.githubuser.utils.Utils
 

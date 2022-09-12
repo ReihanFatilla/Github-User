@@ -1,7 +1,6 @@
 package com.reift.githubuser.data
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import com.reift.githubuser.data.local.room.UserDB
 import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.network.ApiConfig
@@ -11,10 +10,6 @@ import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.data.network.response.search.UserResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 
 class UserRepository(
     context: Context,

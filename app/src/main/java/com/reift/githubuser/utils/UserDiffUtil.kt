@@ -14,10 +14,10 @@ class UserDiffUtil(private val oldList: List<UserItem>, private val newList: Lis
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val OldList = oldList[oldItemPosition]
-        val NewList = newList[newItemPosition]
-        return OldList.login == NewList.login
-                && OldList.avatarUrl == NewList.avatarUrl
-                && OldList.htmlUrl == NewList.htmlUrl
+        val mOldList = oldList[oldItemPosition]
+        val mNewList = newList[newItemPosition]
+        return mOldList.login == mNewList.login
+                && mOldList.avatarUrl == mNewList.avatarUrl
+                && mOldList.htmlUrl == mNewList.htmlUrl
     }
 }

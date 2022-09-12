@@ -13,18 +13,18 @@ class ThemeRepository(
 ) {
 
     private val Context.dataStore by preferencesDataStore(Constant.PREF_SETTINGS)
-    private val THEME_KEY = booleanPreferencesKey(Constant.PREF_THEME)
+    private val themeKey = booleanPreferencesKey(Constant.PREF_THEME)
     private val settingDataStore = context.dataStore
 
     fun getThemeSetting(): Flow<Boolean> {
         return settingDataStore.data.map {
-            it[THEME_KEY] ?: false
+            it[themeKey] ?: false
         }
     }
 
     suspend fun saveThemeSetting(isDarkMode: Boolean) {
         settingDataStore.edit {
-            it[THEME_KEY] = isDarkMode
+            it[themeKey] = isDarkMode
         }
     }
 

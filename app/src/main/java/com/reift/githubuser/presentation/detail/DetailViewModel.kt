@@ -3,14 +3,12 @@ package com.reift.githubuser.presentation.detail
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.reift.githubuser.data.UserRepository
 import com.reift.githubuser.data.local.room.UserEntity
 import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.presentation.favorite.FollowingViewModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
