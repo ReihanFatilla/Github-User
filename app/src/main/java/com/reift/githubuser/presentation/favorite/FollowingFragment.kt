@@ -56,14 +56,12 @@ class FollowingFragment : Fragment() {
                                 Intent(context, DetailActivity::class.java)
                                     .putExtra(Constant.EXTRA_DETAIL, username)
                                     .putExtra(Constant.EXTRA_IS_ONLINE, isOnline())
-                                    .putExtra(Constant.EXTRA_ID, it[position].id)
                             )
                         } else if(!isOnline()){
                             startActivity(
                                 Intent(context, DetailActivity::class.java)
                                     .putExtra(Constant.EXTRA_DETAIL_OBJECT, it[position])
                                     .putExtra(Constant.EXTRA_IS_ONLINE, !isOnline())
-                                    .putExtra(Constant.EXTRA_ID, it[position].id)
                             )
                         }
                     }

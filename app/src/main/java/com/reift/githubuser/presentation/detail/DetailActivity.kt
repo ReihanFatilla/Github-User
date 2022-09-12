@@ -18,6 +18,7 @@ import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.search.UserItem
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
+import com.reift.githubuser.presentation.favorite.FollowingFragment
 import com.reift.githubuser.utils.DataMapper
 import com.reift.githubuser.utils.Utils
 

@@ -6,7 +6,6 @@ object Constant {
     const val EXTRA_DETAIL = "INTENT_EXTRA_DETAIL"
     const val EXTRA_DETAIL_OBJECT = "INTENT_EXTRA_DETAIL_OBJECT"
     const val EXTRA_IS_ONLINE = "EXTRA_IS_ONLINE"
-    const val EXTRA_ID = "EXTRA_USER_ID"
 
     const val BUNDLE_FOLLOW = "BUNDLE_FOLLOW"
 
@@ -18,5 +17,4 @@ object Constant {
 
     const val PREF_THEME = "THEME_SETTINGS"
 
-    const val PREF_USER = "PREF_USER"
 }
