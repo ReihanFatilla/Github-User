@@ -1,6 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.GithubUser" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.GithubUser" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">@color/primary_color</item>
@@ -10,8 +10,10 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/app_backround_dark</item>
+        <item name="android:statusBarColor" >?attr/bgColor</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
         <item name="textColor">@color/black</item>
         <item name="cardColor">@color/card_background_light</item>
         <item name="bgColor">@color/app_backround_light</item>
@@ -22,7 +24,7 @@
 
     <style name="textStyleTemp">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">?attr/textColor</item>
     </style>
 
     <style name="textStyleTemp.detailStats">

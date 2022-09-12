@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.detail.DetailActivity"
-    android:background="@color/app_backround"
+    android:background="?attr/bgColor"
     >
 
     <com.google.android.material.appbar.AppBarLayout
@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="24dp"
-        android:background="@color/app_backround"
+        android:background="?attr/bgColor"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/app_backround"
+            android:background="?attr/bgColor"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             >
 
@@ -103,7 +103,7 @@
                             android:maxLines="1"
                             android:layout_marginStart="6dp"
                             android:textSize="13sp"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/textColor"
                             android:textStyle="normal"
                             android:textAlignment="center"
                             />
@@ -134,7 +134,7 @@
                             tools:text="IDN Boarding SChool"
                             android:layout_marginStart="6dp"
                             android:textSize="13sp"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/textColor"
                             android:maxLines="1"
                             android:textStyle="normal"
                             android:textAlignment="center"
@@ -163,6 +163,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:textSize="16sp"
+                        android:textColor="@color/white"
                         android:theme="@style/textStyleTemp"
                         android:text="@string/follow"
                         android:layout_margin="16dp"
@@ -258,11 +259,11 @@
             android:id="@+id/tab_follow"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/card_background"
+            android:background="?attr/cardColor"
             app:layout_constraintTop_toTopOf="parent"
             app:tabIndicatorColor="@color/primary_color"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/white"
+            app:tabSelectedTextColor="?attr/textColor"
+            app:tabTextColor="?attr/textColor"
             />
 
         <androidx.viewpager2.widget.ViewPager2
