@@ -75,17 +75,14 @@ class DetailActivity : AppCompatActivity() {
             if(isFollowing) unFollowButtonMode()
 
             binding.btnFollow.setOnClickListener {
-                if(!isFollowing){
-                    viewModel.insertFollowing(DataMapper.mapResponseToEntity(user, 0))
-                    viewModel.saveFollowingStatus(user.login, true)
-                    Toast.makeText(applicationContext, "Followed!", Toast.LENGTH_SHORT).show()
-                    Log.i("setUpFollowFeatureA", "Insert: ${DataMapper.mapResponseToEntity(user, 0)}")
-                    unFollowButtonMode()
-                } else {
+                if(isFollowing){
                     viewModel.deleteFollowing(entity)
-                    viewModel.removeFollowingStatus(user.login)
                     Toast.makeText(applicationContext, "Unfollowed!", Toast.LENGTH_SHORT).show()
                     followButtonMode()
+                } else {
+                    viewModel.insertFollowing(DataMapper.mapResponseToEntity(user, 0))
+                    Toast.makeText(applicationContext, "Followed!", Toast.LENGTH_SHORT).show()
+                    unFollowButtonMode()
                 }
             }
         }

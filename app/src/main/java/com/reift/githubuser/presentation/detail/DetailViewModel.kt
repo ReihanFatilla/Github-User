@@ -34,19 +34,6 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
-    fun saveFollowingStatus(key: String, value: Boolean){
-        repository.putPref(key, value)
-    }
-
-    fun removeFollowingStatus(key: String){
-        repository.removePref(key)
-    }
-
-    fun getFollowStatus(key: String): Boolean {
-        return repository.getBoolean(key)
-    }
-
-
     fun getUserDetail(username: String){
         repository.getUserDetail(
             username,
