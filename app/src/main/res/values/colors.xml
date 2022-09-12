@@ -20,12 +20,12 @@
     <color name="detail_icon_dark">#9A9A9A</color>
     <color name="gray_dark">#AAAAAA</color>
 
-<!--&lt;!&ndash;    Light Theme&ndash;&gt;-->
-<!--    <color name="card_background_light">#A6A6A6</color>-->
-<!--    <color name="app_backround_light">#F1F1F1</color>-->
-<!--    <color name="bottomnav_background_light">#D5D5D5</color>-->
-<!--    <color name="detail_icon_light">#323232</color>-->
-<!--    <color name="gray_light">#737373</color>-->
+<!--    Light Theme-->
+    <color name="card_background_light">#A6A6A6</color>
+    <color name="app_backround_light">#FFFFFF</color>
+    <color name="bottomnav_background_light">#D5D5D5</color>
+    <color name="detail_icon_light">#323232</color>
+    <color name="gray_light">#737373</color>
 
 
 </resources>

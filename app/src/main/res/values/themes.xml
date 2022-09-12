@@ -12,12 +12,12 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/app_backround_dark</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="Theme.GithubUser.SplashTheme">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:background">@drawable/splash_screen</item>
+        <item name="textColor">@color/black</item>
+        <item name="cardColor">@color/card_background_light</item>
+        <item name="bgColor">@color/app_backround_light</item>
+        <item name="bottomNavColor">@color/bottomnav_background_light</item>
+        <item name="navUnselectedColor">@color/black</item>
+        <item name="textGrayColor">@color/gray_light</item>
     </style>
 
     <style name="textStyleTemp">
@@ -42,7 +42,6 @@
         <item name="android:textColorHint">@color/gray_dark</item>
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textCursorDrawable">@drawable/color_cursor</item>
-        <item name="tint">@color/black</item>
     </style>
 
     <style name="switchTheme" parent="Theme.AppCompat.Light">

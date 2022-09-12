@@ -17,10 +17,6 @@
         android:theme="@style/Theme.GithubUser"
         tools:targetApi="31">
         <activity
-            android:name="com.reift.githubuser.presentation.splash.SplashActivity"
-            android:theme="@style/Theme.GithubUser.SplashTheme"
-            android:exported="false" />
-        <activity
             android:name="com.reift.githubuser.presentation.detail.DetailActivity"
             android:exported="false" />
         <activity
