@@ -2,11 +2,13 @@ package com.reift.githubuser.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.reift.githubuser.data.network.response.search.UserItem
 import com.reift.githubuser.databinding.ItemGithubUserBinding
 import com.reift.githubuser.utils.OnItemClickCallback
+import com.reift.githubuser.utils.UserDiffUtil
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
@@ -19,8 +21,11 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     }
 
     fun setData(list: List<UserItem>) {
+        val diffUtil = UserDiffUtil(listUser, list)
+        val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
         listUser.clear()
         listUser.addAll(list)
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 
     class UserViewHolder(val binding: ItemGithubUserBinding) : RecyclerView.ViewHolder(binding.root)
@@ -37,6 +42,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         with(listUser[position]) {
             holder.apply {
+
                 binding.apply {
                     tvName.text = login
                     tvGithubLink.text = htmlUrl.drop(8)

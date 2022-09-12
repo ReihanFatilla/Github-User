@@ -11,6 +11,7 @@ import com.reift.githubuser.data.network.response.follow.FollowResponse
 import com.reift.githubuser.data.network.response.search.UserResponse
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.Flow
 
 class UserRepository(
     context: Context,
@@ -25,7 +26,7 @@ class UserRepository(
 
     suspend fun deleteFollowing(user: UserEntity) = userDao.deleteFollowing(user)
 
-    fun getFollowList(): LiveData<List<UserEntity>> = userDao.getFollowList()
+    fun getFollowList() = userDao.getFollowList()
 
     fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
         apiService.searchByUsername(username)
