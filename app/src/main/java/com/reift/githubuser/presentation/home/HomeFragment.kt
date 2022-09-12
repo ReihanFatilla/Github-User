@@ -128,4 +128,9 @@ class HomeFragment : Fragment() {
             binding.rvGithubUser.visibility = View.VISIBLE
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

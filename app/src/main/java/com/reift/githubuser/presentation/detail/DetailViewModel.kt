@@ -20,6 +20,8 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     val followingResponse = MutableLiveData<List<FollowResponse>?>()
     val followersResponse = MutableLiveData<List<FollowResponse>?>()
 
+    fun getIdByUsername(username: String) = repository.getIdByUsername(username)
+
     fun insertFollowing(user: UserEntity) {
         viewModelScope.launch(Dispatchers.IO){
             repository.insertFollowing(user)
@@ -33,11 +35,11 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun saveFollowingStatus(key: String, value: Boolean){
-        repository.put(key, value)
+        repository.putPref(key, value)
     }
 
     fun removeFollowingStatus(key: String){
-        repository.remove(key)
+        repository.removePref(key)
     }
 
     fun getFollowStatus(key: String): Boolean {

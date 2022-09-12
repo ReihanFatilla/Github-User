@@ -5,10 +5,10 @@ import com.reift.githubuser.data.network.response.detail.DetailResponse
 import com.reift.githubuser.data.network.response.search.UserItem
 
 object DataMapper {
-    fun mapResponseToEntity(input: DetailResponse): UserEntity{
+    fun mapResponseToEntity(input: DetailResponse, id: Int): UserEntity{
         return with(input){
             UserEntity(
-                0,
+                id,
                 login,
                 company.toString(),
                 publicRepos,
@@ -35,6 +35,7 @@ object DataMapper {
     fun mapEntityToResponse(input: UserEntity): DetailResponse{
         return with(input){
             DetailResponse(
+                id,
                 "",
                 login,
                 company,

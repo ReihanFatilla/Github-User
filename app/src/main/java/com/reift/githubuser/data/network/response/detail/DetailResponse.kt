@@ -3,6 +3,8 @@ package com.reift.githubuser.data.network.response.detail
 import com.google.gson.annotations.SerializedName
 
 data class DetailResponse(
+	val id: Int,
+
 	@field:SerializedName("following_url")
 	val followingUrl: String,
 

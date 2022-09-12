@@ -2,9 +2,11 @@ package com.reift.githubuser.presentation.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -68,22 +70,27 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpFollowFeature() {
-        val isFollowing = viewModel.getFollowStatus(user.login)
-        if(isFollowing) unFollowButtonMode()
+        viewModel.getIdByUsername(user.login).observe(this){ entity ->
+            val isFollowing = entity != null
+            if(isFollowing) unFollowButtonMode()
 
-        val userEntity = DataMapper.mapResponseToEntity(user)
-
-        binding.btnFollow.setOnClickListener {
-            if(!isFollowing){
-                viewModel.insertFollowing(userEntity)
-                viewModel.saveFollowingStatus(user.login, true)
-                unFollowButtonMode()
-            } else if(isFollowing){
-                viewModel.deleteFollowing(userEntity)
-                viewModel.removeFollowingStatus(user.login)
-                followButtonMode()
+            binding.btnFollow.setOnClickListener {
+                if(!isFollowing){
+                    viewModel.insertFollowing(DataMapper.mapResponseToEntity(user, 0))
+                    viewModel.saveFollowingStatus(user.login, true)
+                    Toast.makeText(applicationContext, "Followed!", Toast.LENGTH_SHORT).show()
+                    Log.i("setUpFollowFeatureA", "Insert: ${DataMapper.mapResponseToEntity(user, 0)}")
+                    unFollowButtonMode()
+                } else {
+                    viewModel.deleteFollowing(entity)
+                    viewModel.removeFollowingStatus(user.login)
+                    Toast.makeText(applicationContext, "Unfollowed!", Toast.LENGTH_SHORT).show()
+                    followButtonMode()
+                }
             }
         }
+
+
     }
 
     private fun setUpViewPager() {

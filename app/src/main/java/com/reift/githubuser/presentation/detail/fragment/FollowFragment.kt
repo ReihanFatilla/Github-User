@@ -84,7 +84,7 @@ class FollowFragment : Fragment() {
                 mAdapter.setData(following)
 
                 mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                    override fun onItemClicked(username: String) {
+                    override fun onItemClicked(username: String, position: Int) {
                         startActivity(
                             Intent(context, DetailActivity::class.java)
                                 .putExtra(Constant.EXTRA_DETAIL, username)
@@ -104,7 +104,7 @@ class FollowFragment : Fragment() {
                 mAdapter.setData(followers)
 
                 mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
-                    override fun onItemClicked(username: String) {
+                    override fun onItemClicked(username: String, position: Int) {
                         startActivity(
                             Intent(context, DetailActivity::class.java)
                                 .putExtra(Constant.EXTRA_DETAIL, username)

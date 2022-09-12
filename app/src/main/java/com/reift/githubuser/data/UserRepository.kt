@@ -21,17 +21,19 @@ class UserRepository(
     private val userDao = UserDB.getInstance(context).userDao()
     private val pref = PreferenceHelper(context)
 
-    fun put(key: String, value: Boolean){
+    fun putPref(key: String, value: Boolean){
         pref.put(key, value)
     }
 
-    fun remove(key: String){
+    fun removePref(key: String){
         pref.remove(key)
     }
 
     fun getBoolean(key: String): Boolean {
         return pref.getBoolean(key)
     }
+
+    fun getIdByUsername(username: String) = userDao.getIdByUsername(username)
 
     suspend fun insertFollowing(user: UserEntity) = userDao.insertFollowing(user)
 
