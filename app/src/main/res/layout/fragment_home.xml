@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.main.MainActivity"
-    android:background="@color/app_backround">
+    android:background="?attr/bgColor">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dark_mode"
-                android:textColor="@color/white"
+                android:textColor="?attr/blackWhiteColor"
                 android:textSize="13sp"
                 android:theme="@style/switchTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:textSize="14sp"
-                android:textColor="@color/gray_dark"
+                android:textColor="?attr/grayColor"
                 tools:text="Search Result for Reihan"
                 app:layout_constraintTop_toBottomOf="@id/sv_github_user"
                 />

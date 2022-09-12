@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     tools:text="Reihan Fatilla"
                     android:textSize="22sp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/blackWhiteColor"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:layout_marginTop="12dp"
@@ -103,7 +103,7 @@
                             android:maxLines="1"
                             android:layout_marginStart="6dp"
                             android:textSize="13sp"
-                            android:textColor="?attr/textColor"
+                            android:textColor="?attr/blackWhiteColor"
                             android:textStyle="normal"
                             android:textAlignment="center"
                             />
@@ -134,7 +134,7 @@
                             tools:text="IDN Boarding SChool"
                             android:layout_marginStart="6dp"
                             android:textSize="13sp"
-                            android:textColor="?attr/textColor"
+                            android:textColor="?attr/blackWhiteColor"
                             android:maxLines="1"
                             android:textStyle="normal"
                             android:textAlignment="center"
@@ -262,8 +262,8 @@
             android:background="?attr/cardColor"
             app:layout_constraintTop_toTopOf="parent"
             app:tabIndicatorColor="@color/primary_color"
-            app:tabSelectedTextColor="?attr/textColor"
-            app:tabTextColor="?attr/textColor"
+            app:tabSelectedTextColor="?attr/blackWhiteColor"
+            app:tabTextColor="?attr/blackWhiteColor"
             />
 
         <androidx.viewpager2.widget.ViewPager2

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/bg_searchview.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable-v24/bg_searchview_dark.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable-v24/bg_searchview_light.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable-v24/ic_search_light.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/bg_searchview.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/bg_tab_item.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/color_cursor.xml" value="0.1415" />
@@ -19,6 +23,7 @@
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_follow.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_followers.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/fragment_following.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/item_follow.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/item_github_user.xml" value="0.24791666666666667" />

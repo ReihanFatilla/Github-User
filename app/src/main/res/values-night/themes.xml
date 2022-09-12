@@ -1,6 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.GithubUser" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.GithubUser" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryVariant">@color/primary_color</item>
@@ -12,17 +12,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/app_backround_dark</item>
         <!-- Customize your theme here. -->
-        <item name="textColor">@color/white</item>
+
+        <item name="blackWhiteColor">@color/white</item>
         <item name="cardColor">@color/card_background_dark</item>
         <item name="bgColor">@color/app_backround_dark</item>
         <item name="bottomNavColor">@color/bottomnav_background_dark</item>
-        <item name="navUnselectedColor">@color/white</item>
-        <item name="textGrayColor">@color/gray_dark</item>
+        <item name="grayColor">@color/gray_dark</item>
     </style>
 
     <style name="textStyleTemp">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?attr/textColor</item>
+        <item name="android:textColor">?attr/blackWhiteColor</item>
     </style>
 
     <style name="textStyleTemp.detailStats">
@@ -39,15 +39,15 @@
     </style>
 
     <style name="searchViewStyle">
-        <item name="android:textColorHint">?attr/textGrayColor</item>
-        <item name="android:editTextColor">?attr/textGrayColor</item>
+        <item name="android:textColorHint">?attr/grayColor</item>
+        <item name="android:editTextColor">?attr/grayColor</item>
         <item name="android:textCursorDrawable">@drawable/color_cursor</item>
         <item name="tint">@color/white</item>
     </style>
 
     <style name="switchTheme" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/primary_color</item>
-        <item name="android:colorForeground">?attr/textGrayColor</item>
+        <item name="android:colorForeground">?attr/grayColor</item>
 
     </style>
 </resources>

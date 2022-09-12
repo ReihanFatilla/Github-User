@@ -43,7 +43,6 @@ class HomeFragment : Fragment() {
 
     private fun setUpThemeSettings() {
         binding.switchTheme.apply {
-
             viewModel.getThemeSettings().observe(viewLifecycleOwner) { isDarkModeActive: Boolean ->
                 isChecked = if (isDarkModeActive) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
