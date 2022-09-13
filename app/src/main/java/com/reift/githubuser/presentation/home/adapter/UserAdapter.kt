@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.reift.githubuser.data.network.response.search.UserItem
+import com.reift.core.data.network.response.search.UserItem
 import com.reift.githubuser.databinding.ItemGithubUserBinding
-import com.reift.githubuser.utils.OnItemClickCallback
-import com.reift.githubuser.utils.UserDiffUtil
+import com.reift.core.utils.OnItemClickCallback
+import com.reift.core.utils.UserDiffUtil
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private val listUser = ArrayList<UserItem>()
+    private val listUser = ArrayList<com.reift.core.data.network.response.search.UserItem>()
 
     private var onItemClickCallBack: OnItemClickCallback? = null
 
@@ -20,7 +20,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         this.onItemClickCallBack = onItemClickCallback
     }
 
-    fun setData(list: List<UserItem>) {
+    fun setData(list: List<com.reift.core.data.network.response.search.UserItem>) {
         val diffUtil = UserDiffUtil(listUser, list)
         val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
         listUser.clear()

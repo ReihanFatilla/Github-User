@@ -11,12 +11,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.githubuser.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.githubuser.databinding.FragmentHomeBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.home.adapter.UserAdapter
-import com.reift.githubuser.utils.OnItemClickCallback
-import com.reift.githubuser.utils.Utils
+import com.reift.core.utils.OnItemClickCallback
+import com.reift.core.utils.Utils
 
 class HomeFragment : Fragment() {
 

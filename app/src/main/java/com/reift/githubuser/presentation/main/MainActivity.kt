@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
         val navController = findNavController(R.id.fragmemt_container)
         binding.bottomNavBar.setupWithNavController(navController)
+
+
 
     }
 

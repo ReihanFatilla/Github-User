@@ -3,13 +3,13 @@ package com.reift.githubuser.presentation.detail.fragment.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.reift.githubuser.data.network.response.follow.FollowResponse
+import com.reift.core.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.ItemFollowBinding
-import com.reift.githubuser.utils.OnItemClickCallback
+import com.reift.core.utils.OnItemClickCallback
 
 class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
 
-    private var listFollow = ArrayList<FollowResponse>()
+    private var listFollow = ArrayList<com.reift.core.data.network.response.follow.FollowResponse>()
 
     private var onItemClickCallBack: OnItemClickCallback? = null
 
@@ -17,7 +17,7 @@ class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
         this.onItemClickCallBack = onItemClickCallback
     }
 
-    fun setData(list: List<FollowResponse>){
+    fun setData(list: List<com.reift.core.data.network.response.follow.FollowResponse>){
         listFollow.clear()
         listFollow.addAll(list)
     }
