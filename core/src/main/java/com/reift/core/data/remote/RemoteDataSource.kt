@@ -10,7 +10,7 @@ import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.PublishSubject
 
-class RemoteDataSource private constructor(
+class RemoteDataSource (
     private val apiService: ApiService
 ) {
     fun searchByUsername(username: String): Flowable<UserResponse> {

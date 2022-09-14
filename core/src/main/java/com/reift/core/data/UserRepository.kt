@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class UserRepository private constructor(
+class UserRepository (
     private val localDataSource: LocalDataSource,
     private val remoteDataSource: RemoteDataSource,
 ): IUserRepository{
