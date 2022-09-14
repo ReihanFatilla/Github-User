@@ -1,7 +1,7 @@
 package com.reift.core.domain.usecase.detail
 
 import com.reift.core.domain.entity.detail.Detail
-import com.reift.core.domain.entity.detail.follow.Follow
+import com.reift.core.domain.entity.detail.Follow
 import com.reift.core.domain.repository.IUserRepository
 import io.reactivex.rxjava3.core.Flowable
 
