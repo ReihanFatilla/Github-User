@@ -2,20 +2,21 @@ package com.reift.core.data.local.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
 
     @Query("SELECT * FROM UserEntity")
-    fun getFollowList(): LiveData<List<UserEntity>>
+    fun getFollowList(): Flow<List<UserEntity>>
 
     @Query("SELECT * FROM UserEntity WHERE login LIKE :username")
-    fun getIdByUsername(username: String): LiveData<UserEntity>
+    fun getIdByUsername(username: String): Flow<UserEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFollowing(user: UserEntity)
+    fun insertFollowing(user: UserEntity)
 
     @Delete
-    suspend fun deleteFollowing(user: UserEntity)
+    fun deleteFollowing(user: UserEntity)
 
 }
