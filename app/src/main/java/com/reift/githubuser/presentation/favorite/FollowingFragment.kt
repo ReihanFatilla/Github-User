@@ -12,12 +12,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.core.constant.Constant
+import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.databinding.FragmentFollowingBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.home.adapter.UserAdapter
 import com.reift.core.utils.DataMapper
-import com.reift.core.utils.OnItemClickCallback
+import com.reift.githubuser.utils.OnItemClickCallback
 
 
 class FollowingFragment : Fragment() {
@@ -47,7 +47,7 @@ class FollowingFragment : Fragment() {
                 adapter = mAdapter
                 val userItem = DataMapper.mapListEntityToResponse(it)
                 mAdapter.setData(userItem)
-                mAdapter.setOnItemClickCallback(object : OnItemClickCallback{
+                mAdapter.setOnItemClickCallback(object : OnItemClickCallback {
                     override fun onItemClicked(username: String, position: Int) {
                         if(isOnline()){
                             startActivity(

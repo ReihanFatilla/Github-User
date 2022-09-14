@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.core.constant.Constant
+import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.databinding.FragmentFollowBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.detail.DetailViewModel
 import com.reift.githubuser.presentation.detail.fragment.adapter.FollowAdapter
-import com.reift.core.utils.OnItemClickCallback
+import com.reift.githubuser.utils.OnItemClickCallback
 
 
 class FollowFragment : Fragment() {

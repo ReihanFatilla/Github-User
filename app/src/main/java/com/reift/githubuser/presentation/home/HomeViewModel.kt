@@ -6,18 +6,18 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application): AndroidViewModel(application) {
     private val repository = com.reift.core.data.UserRepository(application)
-    private val themeRepository = com.reift.core.data.local.datastore.ThemeRepository(application)
+    private val themeDataStore = com.reift.core.data.local.datastore.ThemeDataStore(application)
 
     val userResponse = MutableLiveData<List<com.reift.core.data.remote.response.search.UserResponseItem>?>()
 
     fun saveThemeSetting(isDarkModeActive: Boolean) {
         viewModelScope.launch {
-            themeRepository.saveThemeSetting(isDarkModeActive)
+            themeDataStore.saveThemeSetting(isDarkModeActive)
         }
     }
 
     fun getThemeSettings(): LiveData<Boolean> {
-        return themeRepository.getThemeSetting().asLiveData()
+        return themeDataStore.getThemeSetting().asLiveData()
     }
 
     fun searchByUsername(username: String){
