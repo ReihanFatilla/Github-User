@@ -31,6 +31,23 @@ object DataMapper {
         }
     }
 
+    fun mapDomainToEntity(input: FollowUser): UserEntity {
+        return with(input) {
+            UserEntity(
+                id,
+                login,
+                company,
+                publicRepos,
+                htmlUrl,
+                followers,
+                avatarUrl,
+                following,
+                name,
+                location
+            )
+        }
+    }
+
     fun mapSearchResponseToDomain(input: UserResponse): Search {
         return Search(
             input.items.map {

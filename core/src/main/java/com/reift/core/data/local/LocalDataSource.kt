@@ -10,6 +10,7 @@ class LocalDataSource private constructor(
     private val userDao: UserDao,
     private val themeDataStore: ThemeDataStore
 ){
+
     suspend fun insertFollowing(user: UserEntity) {
         userDao.insertFollowing(user)
     }
