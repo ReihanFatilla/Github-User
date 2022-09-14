@@ -18,8 +18,8 @@ class LocalDataSource private constructor(
         userDao.deleteFollowing(user)
     }
 
-    fun getIdByUsername(username: String) {
-        userDao.getIdByUsername(username)
+    fun getIdByUsername(username: String): Flow<UserEntity> {
+        return userDao.getIdByUsername(username)
     }
 
     fun getFollowList(): Flow<List<UserEntity>> {

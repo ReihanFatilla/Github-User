@@ -1,5 +1,6 @@
 package com.reift.core.utils
 
+import com.reift.core.data.local.room.UserEntity
 import com.reift.core.data.remote.response.detail.DetailResponse
 import com.reift.core.data.remote.response.follow.FollowResponse
 import com.reift.core.data.remote.response.search.UserResponse
@@ -33,7 +34,7 @@ object DataMapper {
     fun mapSearchResponseToDomain(input: UserResponse): Search {
         return Search(
             input.items.map {
-                with(it){
+                with(it) {
                     SearchItem(
                         login, avatarUrl, htmlUrl
                     )
@@ -42,7 +43,7 @@ object DataMapper {
         )
     }
 
-    fun mapFollowResponseToDomain(input: List<FollowResponse>): List<Follow>{
+    fun mapFollowResponseToDomain(input: List<FollowResponse>): List<Follow> {
         val domain = ArrayList<Follow>()
         input.map {
             val follow = Follow(
@@ -54,8 +55,45 @@ object DataMapper {
         return domain
     }
 
+    fun mapListFollowEntityToDomain(input: List<UserEntity>): List<FollowUser> {
+        val domain = ArrayList<FollowUser>()
+        input.map {
+            val follow = FollowUser(
+                it.id,
+                it.login,
+                it.company,
+                it.publicRepos,
+                it.htmlUrl,
+                it.followers,
+                it.avatarUrl,
+                it.following,
+                it.name,
+                it.location
+            )
+            domain.add(follow)
+        }
+        return domain
+    }
+
+    fun mapFollowEntityToDomain(input: UserEntity): FollowUser {
+        return with(input) {
+            FollowUser(
+                id,
+                login,
+                company,
+                publicRepos,
+                htmlUrl,
+                followers,
+                avatarUrl,
+                following,
+                name,
+                location
+            )
+        }
+    }
+
     fun mapResponseToEntity(
-        input: com.reift.core.data.remote.response.detail.DetailResponse,
+        input: DetailResponse,
         id: Int
     ): com.reift.core.data.local.room.UserEntity {
         return with(input) {
