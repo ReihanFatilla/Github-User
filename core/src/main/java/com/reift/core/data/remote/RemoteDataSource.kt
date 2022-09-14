@@ -25,10 +25,11 @@ class RemoteDataSource private constructor(
                     it
                 )
             }
+
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
 
-    fun getUserDetail(username: String) {
+    fun getUserDetail(username: String): Flowable<DetailResponse> {
         val result = PublishSubject.create<DetailResponse>()
 
         apiService.getUserDetail(username)
@@ -39,6 +40,8 @@ class RemoteDataSource private constructor(
                     it
                 )
             }
+
+        return result.toFlowable(BackpressureStrategy.BUFFER)
     }
 
     fun getUserFollowers(username: String): Flowable<List<FollowResponse>> {
