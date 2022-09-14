@@ -8,7 +8,7 @@ class HomeViewModel(application: Application): AndroidViewModel(application) {
     private val repository = com.reift.core.data.UserRepository(application)
     private val themeRepository = com.reift.core.data.local.datastore.ThemeRepository(application)
 
-    val userResponse = MutableLiveData<List<com.reift.core.data.network.response.search.UserResponseItem>?>()
+    val userResponse = MutableLiveData<List<com.reift.core.data.remote.response.search.UserResponseItem>?>()
 
     fun saveThemeSetting(isDarkModeActive: Boolean) {
         viewModelScope.launch {

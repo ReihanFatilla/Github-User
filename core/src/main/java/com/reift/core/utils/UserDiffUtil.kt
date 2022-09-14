@@ -2,7 +2,7 @@ package com.reift.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
 
-class UserDiffUtil(private val oldList: List<com.reift.core.data.network.response.search.UserResponseItem>, private val newList: List<com.reift.core.data.network.response.search.UserResponseItem>)
+class UserDiffUtil(private val oldList: List<com.reift.core.data.remote.response.search.UserResponseItem>, private val newList: List<com.reift.core.data.remote.response.search.UserResponseItem>)
     : DiffUtil.Callback(){
     override fun getOldListSize() = oldList.size
 

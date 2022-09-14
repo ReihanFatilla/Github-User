@@ -1,24 +1,18 @@
 package com.reift.core.data
 
 import android.content.Context
-import com.reift.core.data.local.room.UserDB
-import com.reift.core.data.local.room.UserEntity
-import com.reift.core.data.network.ApiConfig
-import com.reift.core.data.network.ApiService
-import com.reift.core.data.network.response.detail.DetailResponse
-import com.reift.core.data.network.response.follow.FollowResponse
-import com.reift.core.data.network.response.search.UserResponse
+import com.reift.core.data.local.LocalDataSource
+import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.domain.entity.detail.Detail
 import com.reift.core.domain.entity.detail.follow.Follow
 import com.reift.core.domain.entity.followuser.FollowUser
 import com.reift.core.domain.repository.IUserRepository
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.flow.Flow
 
-class UserRepository(
-    context: Context,
+class UserRepository private constructor(
+    val localDataSource: LocalDataSource,
+    val remoteDataSource: RemoteDataSource,
 ): IUserRepository{
 
     override fun searchByUsername(username: String): Flowable<Detail> {
