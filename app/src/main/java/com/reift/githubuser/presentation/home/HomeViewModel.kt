@@ -2,16 +2,13 @@ package com.reift.githubuser.presentation.home
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.reift.core.data.UserRepository
-import com.reift.core.data.local.datastore.ThemeRepository
-import com.reift.core.data.network.response.search.UserItem
 import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application): AndroidViewModel(application) {
     private val repository = com.reift.core.data.UserRepository(application)
     private val themeRepository = com.reift.core.data.local.datastore.ThemeRepository(application)
 
-    val userResponse = MutableLiveData<List<com.reift.core.data.network.response.search.UserItem>?>()
+    val userResponse = MutableLiveData<List<com.reift.core.data.network.response.search.UserResponseItem>?>()
 
     fun saveThemeSetting(isDarkModeActive: Boolean) {
         viewModelScope.launch {
