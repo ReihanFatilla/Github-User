@@ -2,31 +2,34 @@ package com.reift.githubuser.presentation.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
+import com.reift.core.domain.entity.detail.Detail
 import com.reift.githubuser.R
-import com.reift.githubuser.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
 import com.reift.core.utils.DataMapper
+import com.reift.githubuser.presentation.followuser.FollowUserViewModel
 import com.reift.githubuser.utils.Utils
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
 
     private var _binding: ActivityDetailBinding? = null
     private val binding get() = _binding as ActivityDetailBinding
 
-    private var _viewModel: DetailViewModel? = null
-    private val viewModel get() = _viewModel!!
+    private val viewModel: DetailViewModel by viewModel()
+    private val followUserViewModel: FollowUserViewModel by viewModel()
 
-    private var _user: com.reift.core.data.remote.response.detail.DetailResponse? = null
-    private val user get() = _user as com.reift.core.data.remote.response.detail.DetailResponse
+    private var _user: Detail? = null
+    private val user get() = _user as Detail
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,26 +38,25 @@ class DetailActivity : AppCompatActivity() {
 
         showLoading(true)
 
-        _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
-
-        if(intent.getBooleanExtra(Constant.EXTRA_IS_ONLINE, false)){
+        if(intent.getBooleanExtra(Constant.EXTRA_IS_ONLINE, true)){
             onlineDetail()
         } else {
-            offlineDetail()
+//            offlineDetail()
         }
 
         setUpToolbar()
     }
 
-    private fun offlineDetail() {
-        val intentUser = intent.getParcelableExtra<com.reift.core.data.local.room.UserEntity>(Constant.EXTRA_DETAIL_OBJECT)
-        _user = intentUser?.let { DataMapper.mapEntityToResponse(it) }
-        setUpDetailView()
-    }
+//    private fun offlineDetail() {
+//        val intentUser = intent.getParcelableExtra<com.reift.core.data.local.room.UserEntity>(Constant.EXTRA_DETAIL_OBJECT)
+//        _user = intentUser?.let {
+//            DataMapper.mapEntityToResponse(it)
+//        }
+//        setUpDetailView()
+//    }
 
     private fun onlineDetail() {
-        viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString())
-        viewModel.detailResponse.observe(this){
+        viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString()).observe(this){
             if (it != null && it.avatarUrl.isNotEmpty()){
                 showLoading(false)
                 _user = it
@@ -66,17 +68,18 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpFollowFeature() {
-        viewModel.getIdByUsername(user.login).observe(this){ entity ->
+        Log.i("setUpFollowFeature", "setUpFollowFeature: ${user.login}")
+        followUserViewModel.getIdByUsername(user.login).observe(this){ entity ->
             val isFollowing = entity != null
             if(isFollowing) unFollowButtonMode()
 
             binding.btnFollow.setOnClickListener {
                 if(isFollowing){
-                    viewModel.deleteFollowing(entity)
+                    followUserViewModel.deleteFollowing(entity)
                     Toast.makeText(applicationContext, "Unfollowed!", Toast.LENGTH_SHORT).show()
                     followButtonMode()
                 } else {
-                    viewModel.insertFollowing(DataMapper.mapResponseToEntity(user, 0))
+                    followUserViewModel.insertFollowing(DataMapper.mapDetailDomainToEntity(user, 0))
                     Toast.makeText(applicationContext, "Followed!", Toast.LENGTH_SHORT).show()
                     unFollowButtonMode()
                 }

@@ -6,7 +6,7 @@ import com.reift.core.data.local.room.UserDao
 import com.reift.core.data.local.room.UserEntity
 import kotlinx.coroutines.flow.Flow
 
-class LocalDataSource private constructor(
+class LocalDataSource (
     private val userDao: UserDao,
     private val themeDataStore: ThemeDataStore
 ){

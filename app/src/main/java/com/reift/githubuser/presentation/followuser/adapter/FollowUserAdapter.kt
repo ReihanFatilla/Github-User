@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.reift.core.domain.entity.followuser.FollowUser
-import com.reift.core.domain.entity.search.SearchItem
 import com.reift.githubuser.databinding.ItemGithubUserBinding
+import com.reift.githubuser.presentation.followuser.adapter.FollowUserDiffUtil
 import com.reift.githubuser.utils.OnItemClickCallback
 
-class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class FollowUserAdapter : RecyclerView.Adapter<FollowUserAdapter.UserViewHolder>() {
 
-    private val listUser = ArrayList<SearchItem>()
+    private val listUser = ArrayList<FollowUser>()
 
     private var onItemClickCallBack: OnItemClickCallback? = null
 
@@ -20,8 +20,8 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         this.onItemClickCallBack = onItemClickCallback
     }
 
-    fun setData(list: List<SearchItem>) {
-        val diffUtil = UserDiffUtil(listUser, list)
+    fun setData(list: List<FollowUser>) {
+        val diffUtil = FollowUserDiffUtil(listUser, list)
         val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
         listUser.clear()
         listUser.addAll(list)

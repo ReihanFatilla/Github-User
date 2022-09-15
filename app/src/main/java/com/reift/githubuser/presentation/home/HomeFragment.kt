@@ -9,30 +9,29 @@ import android.widget.CompoundButton
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.githubuser.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.githubuser.databinding.FragmentHomeBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.home.adapter.UserAdapter
 import com.reift.githubuser.utils.OnItemClickCallback
 import com.reift.githubuser.utils.Utils
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding as FragmentHomeBinding
 
-    private var _viewModel: HomeViewModel? = null
-    private val viewModel get() = _viewModel as HomeViewModel
+    private val viewModel: HomeViewModel by viewModel()
+    private val themeViewModel: ThemeViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
-
-        _viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         setUpSearchView()
         setUpRecyclerView()
@@ -43,7 +42,7 @@ class HomeFragment : Fragment() {
 
     private fun setUpThemeSettings() {
         binding.switchTheme.apply {
-            viewModel.getThemeSettings().observe(viewLifecycleOwner) { isDarkModeActive: Boolean ->
+            themeViewModel.getThemeSettings().observe(viewLifecycleOwner) { isDarkModeActive: Boolean ->
                 isChecked = if (isDarkModeActive) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     true
@@ -54,7 +53,7 @@ class HomeFragment : Fragment() {
             }
 
             setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-                viewModel.saveThemeSetting(isChecked)
+                themeViewModel.saveThemeSetting(isChecked)
             }
         }
     }
@@ -89,7 +88,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        viewModel.userResponse.observe(viewLifecycleOwner) {
+        viewModel.searchResponse.observe(viewLifecycleOwner) {
             if(!it.isNullOrEmpty()){
                 showLoading(false)
                 binding.rvGithubUser.apply {

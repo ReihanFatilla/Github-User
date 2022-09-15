@@ -8,18 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.reift.githubuser.constant.Constant
+import com.reift.core.constant.Constant
+import com.reift.core.domain.entity.detail.Follow
 import com.reift.githubuser.databinding.FragmentFollowBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.detail.DetailViewModel
 import com.reift.githubuser.presentation.detail.fragment.adapter.FollowAdapter
 import com.reift.githubuser.utils.OnItemClickCallback
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class FollowFragment : Fragment() {
 
-    private var _viewModel: DetailViewModel? = null
-    private val viewModel get() = _viewModel as DetailViewModel
+    private val viewModel: DetailViewModel by viewModel()
 
     private var _binding: FragmentFollowBinding? = null
     private val binding get() = _binding as FragmentFollowBinding
@@ -28,8 +29,6 @@ class FollowFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
 
         setUpRecyclerView()
 
@@ -45,17 +44,13 @@ class FollowFragment : Fragment() {
         if (type != null && username != null) {
             when (type) {
                 Constant.TYPE_FOLLOWERS -> {
-                    viewModel.getUserFollowers(username)
-
-                    viewModel.followersResponse.observe(viewLifecycleOwner) {
+                    viewModel.getUserFollowers(username).observe(viewLifecycleOwner) {
                         setUpFollowersRV(it)
                         if(it.isNullOrEmpty()) showLoading(true) else showLoading(false)
                     }
                 }
                 Constant.TYPE_FOLLOWING -> {
-                    viewModel.getUserFollowing(username)
-
-                    viewModel.followingResponse.observe(viewLifecycleOwner) {
+                    viewModel.getUserFollowing(username).observe(viewLifecycleOwner) {
                         setUpFollowingRV(it)
                         if(it.isNullOrEmpty()) showLoading(true) else showLoading(false)
                     }
@@ -74,7 +69,7 @@ class FollowFragment : Fragment() {
         }
     }
 
-    private fun setUpFollowingRV(following: List<com.reift.core.data.remote.response.follow.FollowResponse>?) {
+    private fun setUpFollowingRV(following: List<Follow>?) {
         if (following != null) {
             binding.rvFollow.apply {
                 val mAdapter = FollowAdapter()
@@ -95,7 +90,7 @@ class FollowFragment : Fragment() {
         }
     }
 
-    private fun setUpFollowersRV(followers: List<com.reift.core.data.remote.response.follow.FollowResponse>?) {
+    private fun setUpFollowersRV(followers: List<Follow>?) {
         if (followers != null) {
             binding.rvFollow.apply {
                 val mAdapter = FollowAdapter()

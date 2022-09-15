@@ -1,5 +1,6 @@
 package com.reift.core.data.remote
 
+import android.util.Log
 import com.reift.core.data.remote.network.ApiService
 import com.reift.core.data.remote.response.detail.DetailResponse
 import com.reift.core.data.remote.response.follow.FollowResponse
@@ -20,11 +21,15 @@ class RemoteDataSource (
         apiService.searchByUsername(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                result.onNext(
-                    it
-                )
-            }
+            .subscribe (
+                {
+                    result.onNext(
+                        it
+                    )
+                }, {
+                    Log.e("fetchError", "fetchError: ${it.message}", )
+                }
+            )
 
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
@@ -35,11 +40,16 @@ class RemoteDataSource (
         apiService.getUserDetail(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{
-                result.onNext(
-                    it
-                )
-            }
+            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}", )}
+            .subscribe (
+                {
+                    result.onNext(
+                        it
+                    )
+                }, {
+                    Log.e("fetchError", "fetchError: ${it.message}", )
+                }
+            )
 
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
@@ -51,11 +61,16 @@ class RemoteDataSource (
         apiService.getUserFollowers(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                result.onNext(
-                    it
-                )
-            }
+            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}", )}
+            .subscribe (
+                {
+                    result.onNext(
+                        it
+                    )
+                }, {
+                    Log.e("fetchError", "fetchError: ${it.message}", )
+                }
+            )
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
 
@@ -66,11 +81,16 @@ class RemoteDataSource (
         apiService.getUserFollowing(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                result.onNext(
-                    it
-                )
-            }
+            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}", )}
+            .subscribe (
+                {
+                    result.onNext(
+                        it
+                    )
+                }, {
+                    Log.e("fetchError", "fetchError: ${it.message}", )
+                }
+            )
         return result.toFlowable(BackpressureStrategy.BUFFER)
     }
 }

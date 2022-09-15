@@ -1,34 +1,21 @@
 package com.reift.githubuser.presentation.home
 
-import android.app.Application
 import androidx.lifecycle.*
-import kotlinx.coroutines.launch
+import com.reift.core.domain.entity.search.Search
+import com.reift.core.domain.entity.search.SearchItem
+import com.reift.core.domain.usecase.search.SearchUseCase
 
-class HomeViewModel(application: Application): AndroidViewModel(application) {
-    private val repository = com.reift.core.data.UserRepository(application)
-    private val themeDataStore = com.reift.core.data.local.datastore.ThemeDataStore(application)
+class HomeViewModel(
+    private val searchUseCase: SearchUseCase
+): ViewModel() {
+    val searchResponse = MediatorLiveData<List<SearchItem>>()
 
-    val userResponse = MutableLiveData<List<com.reift.core.data.remote.response.search.UserResponseItem>?>()
+    fun searchByUsername(username: String) {
+        val source = LiveDataReactiveStreams.fromPublisher(searchUseCase.searchByUsername(username))
 
-    fun saveThemeSetting(isDarkModeActive: Boolean) {
-        viewModelScope.launch {
-            themeDataStore.saveThemeSetting(isDarkModeActive)
+        searchResponse.addSource(source) {
+            searchResponse.postValue(it.items)
+            searchResponse.removeSource(source)
         }
-    }
-
-    fun getThemeSettings(): LiveData<Boolean> {
-        return themeDataStore.getThemeSetting().asLiveData()
-    }
-
-    fun searchByUsername(username: String){
-        repository.searchByUsername(
-            username,
-            {
-                userResponse.postValue(it.items)
-            },
-            {
-                userResponse.postValue(null)
-            }
-        )
     }
 }
