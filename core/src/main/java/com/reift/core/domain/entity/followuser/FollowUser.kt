@@ -1,8 +1,5 @@
 package com.reift.core.domain.entity.followuser
 
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
-
 data class FollowUser (
     val id: Int,
     val login: String,

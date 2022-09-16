@@ -1,6 +1,5 @@
 package com.reift.core.data.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 

@@ -1,7 +1,5 @@
 package com.reift.core.domain.entity.detail
 
-import com.google.gson.annotations.SerializedName
-
 data class Detail(
 	val id: Int,
 	val followingUrl: String,
