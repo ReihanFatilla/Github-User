@@ -1,4 +1,4 @@
-package com.reift.githubuser.presentation.home.adapter
+package com.reift.githubuser.presentation.followuser.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.reift.core.domain.entity.followuser.FollowUser
 import com.reift.githubuser.databinding.ItemGithubUserBinding
-import com.reift.githubuser.presentation.followuser.adapter.FollowUserDiffUtil
 import com.reift.githubuser.utils.OnItemClickCallback
 
 class FollowUserAdapter : RecyclerView.Adapter<FollowUserAdapter.UserViewHolder>() {

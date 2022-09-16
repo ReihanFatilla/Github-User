@@ -1,6 +1,8 @@
 package com.reift.githubuser.presentation.detail
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.ViewModel
 import com.reift.core.domain.entity.detail.Detail
 import com.reift.core.domain.entity.detail.Follow
 import com.reift.core.domain.usecase.detail.DetailUseCase

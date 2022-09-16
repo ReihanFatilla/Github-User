@@ -10,12 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
-import com.reift.core.domain.entity.detail.Detail
-import com.reift.githubuser.R
 import com.reift.core.constant.Constant
+import com.reift.core.domain.entity.detail.Detail
+import com.reift.core.utils.DataMapper
+import com.reift.githubuser.R
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
-import com.reift.core.utils.DataMapper
 import com.reift.githubuser.presentation.followuser.FollowUserViewModel
 import com.reift.githubuser.utils.Utils
 import org.koin.android.viewmodel.ext.android.viewModel

@@ -2,7 +2,6 @@ package com.reift.githubuser.presentation.followuser.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.reift.core.domain.entity.followuser.FollowUser
-import com.reift.core.domain.entity.search.SearchItem
 
 class FollowUserDiffUtil(private val oldList: List<FollowUser>, private val newList: List<FollowUser>)
     : DiffUtil.Callback(){

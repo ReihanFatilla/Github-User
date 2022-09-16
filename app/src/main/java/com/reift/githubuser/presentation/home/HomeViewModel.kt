@@ -1,7 +1,8 @@
 package com.reift.githubuser.presentation.home
 
-import androidx.lifecycle.*
-import com.reift.core.domain.entity.search.Search
+import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.ViewModel
 import com.reift.core.domain.entity.search.SearchItem
 import com.reift.core.domain.usecase.search.SearchUseCase
 

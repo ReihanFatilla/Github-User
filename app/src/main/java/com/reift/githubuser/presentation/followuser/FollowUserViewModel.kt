@@ -1,12 +1,10 @@
 package com.reift.githubuser.presentation.followuser
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.reift.core.domain.entity.followuser.FollowUser
 import com.reift.core.domain.usecase.followuser.FollowUserUseCase
-import kotlinx.coroutines.flow.Flow
 
 class FollowUserViewModel(private val followUserUseCase: FollowUserUseCase): ViewModel() {
 

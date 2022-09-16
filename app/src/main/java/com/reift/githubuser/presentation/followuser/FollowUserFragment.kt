@@ -7,14 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
 import com.reift.githubuser.databinding.FragmentFollowingBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
-import com.reift.githubuser.presentation.home.adapter.FollowUserAdapter
-import com.reift.githubuser.presentation.home.adapter.UserAdapter
+import com.reift.githubuser.presentation.followuser.adapter.FollowUserAdapter
 import com.reift.githubuser.utils.OnItemClickCallback
 import org.koin.android.viewmodel.ext.android.viewModel
 
