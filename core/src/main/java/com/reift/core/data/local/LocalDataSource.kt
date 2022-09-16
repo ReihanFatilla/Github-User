@@ -19,7 +19,7 @@ class LocalDataSource (
         userDao.deleteFollowing(user)
     }
 
-    fun getIdByUsername(username: String): Flow<UserEntity> {
+    fun getIdByUsername(username: String): Flow<UserEntity?> {
         return userDao.getIdByUsername(username)
     }
 

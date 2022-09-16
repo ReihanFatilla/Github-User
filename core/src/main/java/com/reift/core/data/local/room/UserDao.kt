@@ -11,7 +11,7 @@ interface UserDao {
     fun getFollowList(): Flow<List<UserEntity>>
 
     @Query("SELECT * FROM UserEntity WHERE login LIKE :username")
-    fun getIdByUsername(username: String): Flow<UserEntity>
+    fun getIdByUsername(username: String): Flow<UserEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFollowing(user: UserEntity)

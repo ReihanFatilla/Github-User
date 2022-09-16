@@ -1,5 +1,6 @@
 package com.reift.core.data
 
+import android.util.Log
 import com.reift.core.data.local.LocalDataSource
 import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.domain.entity.detail.Detail
@@ -13,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -51,9 +53,11 @@ class UserRepository (
         }
     }
 
-    override fun getIdByUsername(username: String): Flow<FollowUser> {
+    override fun getIdByUsername(username: String): Flow<FollowUser?> {
         return localDataSource.getIdByUsername(username).map {
-            DataMapper.mapFollowEntityToDomain(it)
+            if(it != null){
+                DataMapper.mapFollowEntityToDomain(it)
+            } else null
         }
     }
 
