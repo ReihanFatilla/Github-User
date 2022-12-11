@@ -1,4 +1,4 @@
-package com.reift.core.utils
+package com.reift.githubuser.utils
 
 object Utils {
     fun getShareMessage(user: com.reift.core.data.remote.response.detail.DetailResponse): String{

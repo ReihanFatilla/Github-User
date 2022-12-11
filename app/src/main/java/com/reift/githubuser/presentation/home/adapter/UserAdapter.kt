@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.reift.githubuser.databinding.ItemGithubUserBinding
-import com.reift.core.utils.OnItemClickCallback
-import com.reift.core.utils.UserDiffUtil
+import com.reift.githubuser.utils.OnItemClickCallback
+import com.reift.githubuser.utils.UserDiffUtil
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 

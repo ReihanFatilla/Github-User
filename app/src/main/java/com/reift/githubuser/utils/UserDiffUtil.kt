@@ -1,4 +1,4 @@
-package com.reift.core.utils
+package com.reift.githubuser.utils
 
 import androidx.recyclerview.widget.DiffUtil
 

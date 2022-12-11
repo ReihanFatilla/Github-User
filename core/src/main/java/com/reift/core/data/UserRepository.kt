@@ -17,8 +17,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class UserRepository private constructor(
-    val localDataSource: LocalDataSource,
-    val remoteDataSource: RemoteDataSource,
+    private val localDataSource: LocalDataSource,
+    private val remoteDataSource: RemoteDataSource,
 ): IUserRepository{
 
     override fun searchByUsername(username: String): Flowable<Search> {

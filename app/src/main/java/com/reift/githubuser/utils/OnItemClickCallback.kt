@@ -1,4 +1,4 @@
-package com.reift.core.utils
+package com.reift.githubuser.utils
 
 interface OnItemClickCallback {
     fun onItemClicked(username: String, position: Int)

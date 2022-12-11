@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.githubuser.R
-import com.reift.core.constant.Constant
+import com.reift.githubuser.constant.Constant
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
 import com.reift.core.utils.DataMapper
-import com.reift.core.utils.Utils
+import com.reift.githubuser.utils.Utils
 
 class DetailActivity : AppCompatActivity() {
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.reift.githubuser.databinding.ItemFollowBinding
-import com.reift.core.utils.OnItemClickCallback
+import com.reift.githubuser.utils.OnItemClickCallback
 
 class FollowAdapter: RecyclerView.Adapter<FollowAdapter.FollowViewHolder>() {
 
