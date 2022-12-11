@@ -2,7 +2,7 @@ package com.reift.core.data.network.response.search
 
 import com.google.gson.annotations.SerializedName
 
-data class UserItem(
+data class UserResponseItem(
 	@field:SerializedName("login")
 	val login: String,
 

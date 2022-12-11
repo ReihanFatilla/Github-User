@@ -38,5 +38,4 @@ data class UserEntity (
 
     @ColumnInfo(name = "location")
     val location: String
-
 ): Parcelable

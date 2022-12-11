@@ -18,9 +18,9 @@ object DataMapper {
         }
     }
 
-    fun mapListEntityToResponse(input: List<com.reift.core.data.local.room.UserEntity>): List<com.reift.core.data.network.response.search.UserItem>{
+    fun mapListEntityToResponse(input: List<com.reift.core.data.local.room.UserEntity>): List<com.reift.core.data.network.response.search.UserResponseItem>{
         return input.map {
-            com.reift.core.data.network.response.search.UserItem(
+            com.reift.core.data.network.response.search.UserResponseItem(
                 it.login,
                 it.avatarUrl,
                 it.htmlUrl
