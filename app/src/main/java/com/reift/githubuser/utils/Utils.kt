@@ -1,7 +1,9 @@
 package com.reift.githubuser.utils
 
+import com.reift.core.domain.entity.detail.Detail
+
 object Utils {
-    fun getShareMessage(user: com.reift.core.data.remote.response.detail.DetailResponse): String{
+    fun getShareMessage(user: Detail): String{
         return "This is ${user.name}'s GitHub Profile\n" +
                 "Username: ${user.location}\n" +
                 "Company: ${user.company}\n" +

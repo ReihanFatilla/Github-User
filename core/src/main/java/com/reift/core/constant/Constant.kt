@@ -1,4 +1,4 @@
-package com.reift.githubuser.constant
+package com.reift.core.constant
 
 object Constant {
     const val EXTRA_DETAIL = "INTENT_EXTRA_DETAIL"

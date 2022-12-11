@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.reift.githubuser.constant.Constant
+import com.reift.core.constant.Constant
 import com.reift.githubuser.presentation.detail.fragment.FollowFragment
 
 class ViewPagerAdapter(fa: FragmentActivity, private val username: String) : FragmentStateAdapter(fa) {

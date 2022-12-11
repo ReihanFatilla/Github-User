@@ -2,12 +2,18 @@ package com.reift.core.di
 
 import androidx.room.Room
 import com.reift.core.BuildConfig
+import com.reift.core.BuildConfig.API_KEY
 import com.reift.core.data.UserRepository
+import com.reift.core.data.local.LocalDataSource
+import com.reift.core.data.local.datastore.ThemeDataStore
 import com.reift.core.data.local.room.UserDB
 import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.network.ApiService
 import com.reift.core.domain.repository.IUserRepository
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -20,6 +26,14 @@ val networkModule = module{
         OkHttpClient.Builder()
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .addInterceptor {
+                val request = it.request()
+                    .newBuilder()
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Authorization" , API_KEY)
+                    .build()
+                return@addInterceptor it.proceed(request)
+            }
             .build()
     }
     single {
@@ -41,9 +55,13 @@ val databaseModule = module {
             UserDB::class.java, "user.database"
         ).fallbackToDestructiveMigration().build()
     }
+    single {
+        ThemeDataStore(androidContext())
+    }
 }
 
 val repositoryModule = module {
     single { RemoteDataSource(get()) }
+    single { LocalDataSource(get(), get()) }
     single<IUserRepository> { UserRepository(get(), get()) }
 }

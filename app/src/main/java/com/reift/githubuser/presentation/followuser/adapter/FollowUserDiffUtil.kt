@@ -1,8 +1,10 @@
-package com.reift.githubuser.utils
+package com.reift.githubuser.presentation.followuser.adapter
 
 import androidx.recyclerview.widget.DiffUtil
+import com.reift.core.domain.entity.followuser.FollowUser
+import com.reift.core.domain.entity.search.SearchItem
 
-class UserDiffUtil(private val oldList: List<com.reift.core.data.remote.response.search.UserResponseItem>, private val newList: List<com.reift.core.data.remote.response.search.UserResponseItem>)
+class FollowUserDiffUtil(private val oldList: List<FollowUser>, private val newList: List<FollowUser>)
     : DiffUtil.Callback(){
     override fun getOldListSize() = oldList.size
 
