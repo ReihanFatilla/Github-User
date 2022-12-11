@@ -2,8 +2,11 @@ package com.reift.core.di
 
 import androidx.room.Room
 import com.reift.core.BuildConfig
+import com.reift.core.data.UserRepository
 import com.reift.core.data.local.room.UserDB
+import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.network.ApiService
+import com.reift.core.domain.repository.IUserRepository
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -35,7 +38,12 @@ val databaseModule = module {
     single {
         Room.databaseBuilder(
             androidContext(),
-            UserDB::class.java, "Tourism.db"
+            UserDB::class.java, "user.database"
         ).fallbackToDestructiveMigration().build()
     }
+}
+
+val repositoryModule = module {
+    single { RemoteDataSource(get()) }
+    single<IUserRepository> { UserRepository(get(), get()) }
 }
