@@ -11,13 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.githubuser.R
-import com.reift.githubuser.constant.Constant
-import com.reift.githubuser.data.local.room.UserEntity
-import com.reift.githubuser.data.network.response.detail.DetailResponse
+import com.reift.core.constant.Constant
+import com.reift.core.data.local.room.UserEntity
+import com.reift.core.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
-import com.reift.githubuser.utils.DataMapper
-import com.reift.githubuser.utils.Utils
+import com.reift.core.utils.DataMapper
+import com.reift.core.utils.Utils
 
 class DetailActivity : AppCompatActivity() {
 
@@ -27,8 +27,8 @@ class DetailActivity : AppCompatActivity() {
     private var _viewModel: DetailViewModel? = null
     private val viewModel get() = _viewModel!!
 
-    private var _user: DetailResponse? = null
-    private val user get() = _user as DetailResponse
+    private var _user: com.reift.core.data.network.response.detail.DetailResponse? = null
+    private val user get() = _user as com.reift.core.data.network.response.detail.DetailResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun offlineDetail() {
-        val intentUser = intent.getParcelableExtra<UserEntity>(Constant.EXTRA_DETAIL_OBJECT)
+        val intentUser = intent.getParcelableExtra<com.reift.core.data.local.room.UserEntity>(Constant.EXTRA_DETAIL_OBJECT)
         _user = intentUser?.let { DataMapper.mapEntityToResponse(it) }
         setUpDetailView()
     }

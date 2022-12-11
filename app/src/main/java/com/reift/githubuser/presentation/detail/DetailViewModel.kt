@@ -4,31 +4,31 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.reift.githubuser.data.UserRepository
-import com.reift.githubuser.data.local.room.UserEntity
-import com.reift.githubuser.data.network.response.detail.DetailResponse
-import com.reift.githubuser.data.network.response.follow.FollowResponse
+import com.reift.core.data.UserRepository
+import com.reift.core.data.local.room.UserEntity
+import com.reift.core.data.network.response.detail.DetailResponse
+import com.reift.core.data.network.response.follow.FollowResponse
 import com.reift.githubuser.presentation.favorite.FollowingViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
-    private val repository = UserRepository(application)
+    private val repository = com.reift.core.data.UserRepository(application)
     private val followingVM = FollowingViewModel(application)
 
-    val detailResponse = MutableLiveData<DetailResponse?>()
-    val followingResponse = MutableLiveData<List<FollowResponse>?>()
-    val followersResponse = MutableLiveData<List<FollowResponse>?>()
+    val detailResponse = MutableLiveData<com.reift.core.data.network.response.detail.DetailResponse?>()
+    val followingResponse = MutableLiveData<List<com.reift.core.data.network.response.follow.FollowResponse>?>()
+    val followersResponse = MutableLiveData<List<com.reift.core.data.network.response.follow.FollowResponse>?>()
 
     fun getIdByUsername(username: String) = repository.getIdByUsername(username)
 
-    fun insertFollowing(user: UserEntity) {
+    fun insertFollowing(user: com.reift.core.data.local.room.UserEntity) {
         viewModelScope.launch(Dispatchers.IO){
             repository.insertFollowing(user)
         }
     }
 
-    fun deleteFollowing(user: UserEntity) {
+    fun deleteFollowing(user: com.reift.core.data.local.room.UserEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteFollowing(user)
         }
