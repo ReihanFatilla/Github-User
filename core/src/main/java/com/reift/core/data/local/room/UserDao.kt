@@ -14,9 +14,9 @@ interface UserDao {
     fun getIdByUsername(username: String): Flow<UserEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFollowing(user: UserEntity)
+    suspend fun insertFollowing(user: UserEntity)
 
     @Delete
-    fun deleteFollowing(user: UserEntity)
+    suspend fun deleteFollowing(user: UserEntity)
 
 }

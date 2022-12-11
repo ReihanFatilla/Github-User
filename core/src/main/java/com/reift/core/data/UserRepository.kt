@@ -9,8 +9,12 @@ import com.reift.core.domain.entity.search.Search
 import com.reift.core.domain.repository.IUserRepository
 import com.reift.core.utils.DataMapper
 import io.reactivex.rxjava3.core.Flowable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class UserRepository private constructor(
     val localDataSource: LocalDataSource,
@@ -54,11 +58,13 @@ class UserRepository private constructor(
     }
 
     override fun getThemeSetting(): Flow<Boolean> {
-        TODO("Not yet implemented")
+        return localDataSource.getThemeSetting()
     }
 
     override fun saveThemeSetting(isDarkMode: Boolean) {
-        TODO("Not yet implemented")
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataSource.saveThemeSetting(isDarkMode)
+        }
     }
 
 }
