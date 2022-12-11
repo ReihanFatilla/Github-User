@@ -9,7 +9,7 @@ import com.reift.core.constant.Constant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class ThemeRepository(
+class ThemeDataStore(
     context: Context
 ) {
 
