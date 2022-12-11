@@ -1,4 +1,4 @@
-package com.reift.core.data.network.response.detail
+package com.reift.core.data.remote.response.detail
 
 import com.google.gson.annotations.SerializedName
 

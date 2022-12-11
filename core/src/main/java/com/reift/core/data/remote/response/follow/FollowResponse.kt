@@ -1,4 +1,4 @@
-package com.reift.core.data.network.response.follow
+package com.reift.core.data.remote.response.follow
 
 import com.google.gson.annotations.SerializedName
 

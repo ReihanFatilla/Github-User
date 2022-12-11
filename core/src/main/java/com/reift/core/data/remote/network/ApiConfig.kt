@@ -1,4 +1,4 @@
-package com.reift.core.data.network
+package com.reift.core.data.remote.network
 
 import com.reift.core.BuildConfig
 import com.reift.core.BuildConfig.BASE_URL

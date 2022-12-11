@@ -11,7 +11,7 @@ import com.reift.core.utils.UserDiffUtil
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private val listUser = ArrayList<com.reift.core.data.network.response.search.UserResponseItem>()
+    private val listUser = ArrayList<com.reift.core.data.remote.response.search.UserResponseItem>()
 
     private var onItemClickCallBack: OnItemClickCallback? = null
 
@@ -19,7 +19,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         this.onItemClickCallBack = onItemClickCallback
     }
 
-    fun setData(list: List<com.reift.core.data.network.response.search.UserResponseItem>) {
+    fun setData(list: List<com.reift.core.data.remote.response.search.UserResponseItem>) {
         val diffUtil = UserDiffUtil(listUser, list)
         val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
         listUser.clear()

@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.reift.githubuser.R
 import com.reift.core.constant.Constant
-import com.reift.core.data.local.room.UserEntity
-import com.reift.core.data.network.response.detail.DetailResponse
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
 import com.reift.core.utils.DataMapper
@@ -27,8 +25,8 @@ class DetailActivity : AppCompatActivity() {
     private var _viewModel: DetailViewModel? = null
     private val viewModel get() = _viewModel!!
 
-    private var _user: com.reift.core.data.network.response.detail.DetailResponse? = null
-    private val user get() = _user as com.reift.core.data.network.response.detail.DetailResponse
+    private var _user: com.reift.core.data.remote.response.detail.DetailResponse? = null
+    private val user get() = _user as com.reift.core.data.remote.response.detail.DetailResponse
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
-import com.reift.core.data.network.response.follow.FollowResponse
 import com.reift.githubuser.databinding.FragmentFollowBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.githubuser.presentation.detail.DetailViewModel
@@ -75,7 +74,7 @@ class FollowFragment : Fragment() {
         }
     }
 
-    private fun setUpFollowingRV(following: List<com.reift.core.data.network.response.follow.FollowResponse>?) {
+    private fun setUpFollowingRV(following: List<com.reift.core.data.remote.response.follow.FollowResponse>?) {
         if (following != null) {
             binding.rvFollow.apply {
                 val mAdapter = FollowAdapter()
@@ -96,7 +95,7 @@ class FollowFragment : Fragment() {
         }
     }
 
-    private fun setUpFollowersRV(followers: List<com.reift.core.data.network.response.follow.FollowResponse>?) {
+    private fun setUpFollowersRV(followers: List<com.reift.core.data.remote.response.follow.FollowResponse>?) {
         if (followers != null) {
             binding.rvFollow.apply {
                 val mAdapter = FollowAdapter()

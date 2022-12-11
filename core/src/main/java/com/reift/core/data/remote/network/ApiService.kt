@@ -1,9 +1,9 @@
-package com.reift.core.data.network
+package com.reift.core.data.remote.network
 
 import com.reift.core.BuildConfig.API_KEY
-import com.reift.core.data.network.response.detail.DetailResponse
-import com.reift.core.data.network.response.follow.FollowResponse
-import com.reift.core.data.network.response.search.UserResponse
+import com.reift.core.data.remote.response.detail.DetailResponse
+import com.reift.core.data.remote.response.follow.FollowResponse
+import com.reift.core.data.remote.response.search.UserResponse
 import io.reactivex.rxjava3.core.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Headers
