@@ -12,4 +12,12 @@ class FollowUserInteractor(val repository: IUserRepository): FollowUserUseCase {
     override fun getIdByUsername(username: String): Flow<FollowUser> {
         return repository.getIdByUsername(username)
     }
+
+    override fun addFollowUser(followUser: FollowUser) {
+        repository.addFollowUser(followUser)
+    }
+
+    override fun deleteFollowUser(followUser: FollowUser) {
+        repository.deleteFollowUser(followUser)
+    }
 }

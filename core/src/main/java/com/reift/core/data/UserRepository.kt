@@ -57,6 +57,20 @@ class UserRepository private constructor(
         }
     }
 
+    override fun addFollowUser(followUser: FollowUser) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val entity = DataMapper.mapDomainToEntity(followUser)
+            localDataSource.insertFollowing(entity)
+        }
+    }
+
+    override fun deleteFollowUser(followUser: FollowUser) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val entity = DataMapper.mapDomainToEntity(followUser)
+            localDataSource.deleteFollowing(entity)
+        }
+    }
+
     override fun getThemeSetting(): Flow<Boolean> {
         return localDataSource.getThemeSetting()
     }
