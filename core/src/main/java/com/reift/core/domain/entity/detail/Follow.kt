@@ -1,4 +1,4 @@
-package com.reift.core.domain.entity.detail.follow
+package com.reift.core.domain.entity.detail
 
 import com.google.gson.annotations.SerializedName
 

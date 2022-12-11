@@ -1,8 +1,11 @@
 package com.reift.core.utils
 
 import com.reift.core.data.remote.response.detail.DetailResponse
+import com.reift.core.data.remote.response.follow.FollowResponse
 import com.reift.core.data.remote.response.search.UserResponse
 import com.reift.core.domain.entity.detail.Detail
+import com.reift.core.domain.entity.detail.Follow
+import com.reift.core.domain.entity.followuser.FollowUser
 import com.reift.core.domain.entity.search.Search
 import com.reift.core.domain.entity.search.SearchItem
 
@@ -37,6 +40,18 @@ object DataMapper {
                 }
             }
         )
+    }
+
+    fun mapFollowResponseToDomain(input: List<FollowResponse>): List<Follow>{
+        val domain = ArrayList<Follow>()
+        input.map {
+            val follow = Follow(
+                it.login,
+                it.avatarUrl
+            )
+            domain.add(follow)
+        }
+        return domain
     }
 
     fun mapResponseToEntity(
