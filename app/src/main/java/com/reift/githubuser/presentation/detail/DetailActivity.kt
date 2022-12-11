@@ -68,14 +68,14 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpFollowFeature() {
-        Log.i("setUpFollowFeature", "setUpFollowFeature: ${user.login}")
+        Log.i("setUpFollowFeature", "setUpFollowFeature:${user.login}")
         followUserViewModel.getIdByUsername(user.login).observe(this){ entity ->
             val isFollowing = entity != null
             if(isFollowing) unFollowButtonMode()
 
             binding.btnFollow.setOnClickListener {
                 if(isFollowing){
-                    followUserViewModel.deleteFollowing(entity)
+                    entity?.let { userDel -> followUserViewModel.deleteFollowing(userDel) }
                     Toast.makeText(applicationContext, "Unfollowed!", Toast.LENGTH_SHORT).show()
                     followButtonMode()
                 } else {

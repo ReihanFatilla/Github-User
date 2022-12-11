@@ -1,5 +1,6 @@
 package com.reift.core.utils
 
+import android.util.Log
 import com.reift.core.data.local.room.UserEntity
 import com.reift.core.data.remote.response.detail.DetailResponse
 import com.reift.core.data.remote.response.follow.FollowResponse
@@ -93,6 +94,7 @@ object DataMapper {
     }
 
     fun mapFollowEntityToDomain(input: UserEntity): FollowUser {
+        Log.i("mapFollowEntToDomainA", "before result: $input")
         return with(input) {
             FollowUser(
                 id,

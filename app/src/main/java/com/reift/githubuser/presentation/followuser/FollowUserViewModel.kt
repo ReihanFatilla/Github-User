@@ -8,7 +8,7 @@ import com.reift.core.domain.entity.followuser.FollowUser
 import com.reift.core.domain.usecase.followuser.FollowUserUseCase
 import kotlinx.coroutines.flow.Flow
 
-class FollowUserViewModel(val followUserUseCase: FollowUserUseCase): ViewModel() {
+class FollowUserViewModel(private val followUserUseCase: FollowUserUseCase): ViewModel() {
 
     fun getFollowList(): LiveData<List<FollowUser>> {
         return followUserUseCase.getFollowList().asLiveData()
@@ -22,7 +22,7 @@ class FollowUserViewModel(val followUserUseCase: FollowUserUseCase): ViewModel()
         followUserUseCase.deleteFollowUser(user)
     }
 
-    fun getIdByUsername(username: String): LiveData<FollowUser> {
+    fun getIdByUsername(username: String): LiveData<FollowUser?> {
         return followUserUseCase.getIdByUsername(username).asLiveData()
     }
 

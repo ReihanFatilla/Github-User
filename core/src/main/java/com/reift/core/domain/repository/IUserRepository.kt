@@ -15,7 +15,7 @@ interface IUserRepository {
     fun getUserFollowers(username: String): Flowable<List<Follow>>
 
     fun getFollowList(): Flow<List<FollowUser>>
-    fun getIdByUsername(username: String): Flow<FollowUser>
+    fun getIdByUsername(username: String): Flow<FollowUser?>
     fun addFollowUser(followUser: FollowUser)
     fun deleteFollowUser(followUser: FollowUser)
 
