@@ -8,78 +8,49 @@ import com.reift.core.data.network.ApiService
 import com.reift.core.data.network.response.detail.DetailResponse
 import com.reift.core.data.network.response.follow.FollowResponse
 import com.reift.core.data.network.response.search.UserResponse
+import com.reift.core.domain.entity.detail.Detail
+import com.reift.core.domain.entity.detail.follow.Follow
+import com.reift.core.domain.entity.followuser.FollowUser
+import com.reift.core.domain.repository.IUserRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.flow.Flow
 
 class UserRepository(
     context: Context,
-){
+): IUserRepository{
 
-    private val apiService: ApiService = ApiConfig.getApiService()
-    private val userDao = UserDB.getInstance(context).userDao()
-
-    fun getIdByUsername(username: String) = userDao.getIdByUsername(username)
-
-    suspend fun insertFollowing(user: UserEntity) = userDao.insertFollowing(user)
-
-    suspend fun deleteFollowing(user: UserEntity) = userDao.deleteFollowing(user)
-
-    fun getFollowList() = userDao.getFollowList()
-
-    fun searchByUsername(username: String, responseHandler : (UserResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
-        apiService.searchByUsername(username)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (
-                {
-                    responseHandler(it)
-                },
-                {
-                    errorHandler(it)
-                }
-            )
+    override fun searchByUsername(username: String): Flowable<Detail> {
+        TODO("Not yet implemented")
     }
 
-    fun getUserDetail(username: String, responseHandler : (DetailResponse) -> Unit, errorHandler : (Throwable) -> Unit) {
-        apiService.getUserDetail(username)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (
-                {
-                    responseHandler(it)
-                },
-                {
-                    errorHandler(it)
-                }
-            )
+    override fun getUserDetail(username: String): Flowable<Detail> {
+        TODO("Not yet implemented")
     }
 
-    fun getUserFollowers(username: String, responseHandler : (List<FollowResponse>) -> Unit, errorHandler : (Throwable) -> Unit) {
-        apiService.getUserFollowers(username)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe (
-                {
-                    responseHandler(it)
-                },
-                {
-                    errorHandler(it)
-                }
-            )
+    override fun getUserFollowing(username: String): Flowable<List<Follow>> {
+        TODO("Not yet implemented")
     }
 
-    fun getUserFollowing(username: String, responseHandler : (List<FollowResponse>) -> Unit, errorHandler : (Throwable) -> Unit) {
-        apiService.getUserFollowing(username)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    responseHandler(it)
-                },
-                {
-                    errorHandler(it)
-                }
-            )
+    override fun getUserFollowers(username: String): Flowable<List<Follow>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getFollowList(): Flow<List<FollowUser>> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getIdByUsername(username: String): Flow<FollowUser> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getThemeSetting(): Flow<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override fun saveThemeSetting(isDarkMode: Boolean) {
+        TODO("Not yet implemented")
     }
 
 }

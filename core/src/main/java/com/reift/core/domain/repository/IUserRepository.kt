@@ -15,4 +15,7 @@ interface IUserRepository {
 
     fun getFollowList(): Flow<List<FollowUser>>
     fun getIdByUsername(username: String): Flow<FollowUser>
+
+    fun getThemeSetting(): Flow<Boolean>
+    fun saveThemeSetting(isDarkMode: Boolean)
 }
