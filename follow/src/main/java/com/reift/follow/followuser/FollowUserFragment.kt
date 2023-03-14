@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reift.core.constant.Constant
-import com.reift.githubuser.databinding.FragmentFollowingBinding
 import com.reift.githubuser.presentation.detail.DetailActivity
 import com.reift.follow.adapter.FollowUserAdapter
+import com.reift.follow.databinding.FragmentFollowingBinding
 import com.reift.follow.di.useCaseModule
 import com.reift.follow.di.viewModelModule
 import com.reift.githubuser.utils.OnItemClickCallback

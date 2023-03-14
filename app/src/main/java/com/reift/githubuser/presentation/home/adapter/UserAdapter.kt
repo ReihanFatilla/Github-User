@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.reift.core.domain.entity.search.SearchItem
 import com.reift.githubuser.databinding.ItemGithubUserBinding
+
 import com.reift.githubuser.utils.OnItemClickCallback
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
