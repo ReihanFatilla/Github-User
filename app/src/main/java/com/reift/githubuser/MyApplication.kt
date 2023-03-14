@@ -1,6 +1,7 @@
 package com.reift.githubuser
 
 import android.app.Application
+import com.reift.core.di.dataSourceModule
 import com.reift.core.di.databaseModule
 import com.reift.core.di.networkModule
 import com.reift.core.di.repositoryModule
@@ -23,7 +24,8 @@ class MyApplication : Application(){
                     networkModule,
                     repositoryModule,
                     useCaseModule,
-                    viewModelModule
+                    viewModelModule,
+                    dataSourceModule
                 )
             )
         }

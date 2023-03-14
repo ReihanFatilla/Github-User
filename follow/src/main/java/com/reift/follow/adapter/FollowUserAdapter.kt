@@ -1,4 +1,4 @@
-package com.reift.githubuser.presentation.followuser.adapter
+package com.reift.follow.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

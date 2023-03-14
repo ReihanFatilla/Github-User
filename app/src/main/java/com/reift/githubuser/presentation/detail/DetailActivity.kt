@@ -16,7 +16,6 @@ import com.reift.core.utils.DataMapper
 import com.reift.githubuser.R
 import com.reift.githubuser.databinding.ActivityDetailBinding
 import com.reift.githubuser.presentation.detail.fragment.adapter.ViewPagerAdapter
-import com.reift.githubuser.presentation.followuser.FollowUserViewModel
 import com.reift.githubuser.utils.Utils
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -26,7 +25,6 @@ class DetailActivity : AppCompatActivity() {
     private val binding get() = _binding as ActivityDetailBinding
 
     private val viewModel: DetailViewModel by viewModel()
-    private val followUserViewModel: FollowUserViewModel by viewModel()
 
     private var _user: Detail? = null
     private val user get() = _user as Detail
@@ -68,18 +66,17 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpFollowFeature() {
-        Log.i("setUpFollowFeature", "setUpFollowFeature:${user.login}")
-        followUserViewModel.getIdByUsername(user.login).observe(this){ entity ->
+        viewModel.getIdByUsername(user.login).observe(this){ entity ->
             val isFollowing = entity != null
             if(isFollowing) unFollowButtonMode()
 
             binding.btnFollow.setOnClickListener {
                 if(isFollowing){
-                    entity?.let { userDel -> followUserViewModel.deleteFollowing(userDel) }
+                    entity?.let { userDel -> viewModel.deleteFollowing(userDel) }
                     Toast.makeText(applicationContext, "Unfollowed!", Toast.LENGTH_SHORT).show()
                     followButtonMode()
                 } else {
-                    followUserViewModel.insertFollowing(DataMapper.mapDetailDomainToEntity(user, 0))
+                    viewModel.insertFollowing(DataMapper.mapDetailDomainToEntity(user, 0))
                     Toast.makeText(applicationContext, "Followed!", Toast.LENGTH_SHORT).show()
                     unFollowButtonMode()
                 }

@@ -1,4 +1,4 @@
-package com.reift.githubuser.presentation.followuser
+package com.reift.follow.followuser
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

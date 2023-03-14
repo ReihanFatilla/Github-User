@@ -57,8 +57,11 @@ val databaseModule = module {
     }
 }
 
-val repositoryModule = module {
+val dataSourceModule = module {
     single { RemoteDataSource(get()) }
     single { LocalDataSource(get(), get()) }
+}
+
+val repositoryModule = module {
     single<IUserRepository> { UserRepository(get(), get()) }
 }

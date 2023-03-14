@@ -1,4 +1,4 @@
-package com.reift.githubuser.presentation.followuser.adapter
+package com.reift.follow.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.reift.core.domain.entity.followuser.FollowUser

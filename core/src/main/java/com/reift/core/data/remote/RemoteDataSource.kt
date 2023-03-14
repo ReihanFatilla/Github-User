@@ -14,6 +14,7 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 class RemoteDataSource (
     private val apiService: ApiService
 ) {
+
     fun searchByUsername(username: String): Flowable<UserResponse> {
 
         val result = PublishSubject.create<UserResponse>()
