@@ -10,6 +10,8 @@ import com.reift.core.data.local.room.UserDB
 import com.reift.core.data.remote.RemoteDataSource
 import com.reift.core.data.remote.network.ApiService
 import com.reift.core.domain.repository.IUserRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -47,10 +49,15 @@ val networkModule = module{
 val databaseModule = module {
     factory { get<UserDB>().userDao() }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             UserDB::class.java, "user.database"
-        ).fallbackToDestructiveMigration().build()
+        )
+            .fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
     single {
         ThemeDataStore(androidContext())

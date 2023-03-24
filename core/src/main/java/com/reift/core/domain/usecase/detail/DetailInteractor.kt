@@ -29,6 +29,6 @@ class DetailInteractor(val repository: IUserRepository): DetailUseCase {
     }
 
     override fun deleteFollowUser(followUser: FollowUser) {
-        repository.deleteFollowUser(followUser)
+        return repository.deleteFollowUser(followUser)
     }
 }
