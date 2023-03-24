@@ -12,6 +12,7 @@ import com.reift.core.data.remote.network.ApiService
 import com.reift.core.domain.repository.IUserRepository
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
@@ -22,6 +23,13 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module{
     single {
+        val hostname = "tourism-api.dicoding.dev"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/paJOw+DTCx1KaSMeALtM5gXuxJN4lP04qMKhSXBFa9Y=")
+            .add(hostname, "sha256/qPerI4uMwY1VrtRE5aBY8jIQJopLUuBt2+GDUWMwZn4=")
+            .add(hostname, "sha256/iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=")
+            .build()
+
         OkHttpClient.Builder()
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
@@ -33,6 +41,7 @@ val networkModule = module{
                     .build()
                 return@addInterceptor it.proceed(request)
             }
+            .certificatePinner(certificatePinner)
             .build()
     }
     single {
