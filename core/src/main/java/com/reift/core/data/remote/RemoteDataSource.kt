@@ -28,7 +28,7 @@ class RemoteDataSource (
                         it
                     )
                 }, {
-                    Log.e("fetchError", "fetchError: ${it.message}", )
+                    Log.e("fetchError", "fetchError: ${it.message}")
                 }
             )
 
@@ -41,14 +41,14 @@ class RemoteDataSource (
         apiService.getUserDetail(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}", )}
+            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}")}
             .subscribe (
                 {
                     result.onNext(
                         it
                     )
                 }, {
-                    Log.e("fetchError", "fetchError: ${it.message}", )
+                    Log.e("fetchError", "fetchError: ${it.message}")
                 }
             )
 
@@ -62,14 +62,14 @@ class RemoteDataSource (
         apiService.getUserFollowers(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}", )}
+            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}")}
             .subscribe (
                 {
                     result.onNext(
                         it
                     )
                 }, {
-                    Log.e("fetchError", "fetchError: ${it.message}", )
+                    Log.e("fetchError", "fetchError: ${it.message}")
                 }
             )
         return result.toFlowable(BackpressureStrategy.BUFFER)
@@ -82,14 +82,14 @@ class RemoteDataSource (
         apiService.getUserFollowing(username)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}", )}
+            .doOnError{ Log.e("fetchError", "fetchError: ${it.message}")}
             .subscribe (
                 {
                     result.onNext(
                         it
                     )
                 }, {
-                    Log.e("fetchError", "fetchError: ${it.message}", )
+                    Log.e("fetchError", "fetchError: ${it.message}")
                 }
             )
         return result.toFlowable(BackpressureStrategy.BUFFER)

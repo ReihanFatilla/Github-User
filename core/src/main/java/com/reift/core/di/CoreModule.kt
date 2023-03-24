@@ -14,6 +14,7 @@ import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -23,21 +24,25 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module{
     single {
-        val hostname = "tourism-api.dicoding.dev"
+        val hostname = "api.themoviedb.org"
         val certificatePinner = CertificatePinner.Builder()
             .add(hostname, "sha256/paJOw+DTCx1KaSMeALtM5gXuxJN4lP04qMKhSXBFa9Y=")
             .add(hostname, "sha256/qPerI4uMwY1VrtRE5aBY8jIQJopLUuBt2+GDUWMwZn4=")
             .add(hostname, "sha256/iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=")
             .build()
 
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+
         OkHttpClient.Builder()
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .addInterceptor(logging)
             .addInterceptor {
                 val request = it.request()
                     .newBuilder()
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization" , API_KEY)
+                    .addHeader("Authorization" , "token $API_KEY")
                     .build()
                 return@addInterceptor it.proceed(request)
             }

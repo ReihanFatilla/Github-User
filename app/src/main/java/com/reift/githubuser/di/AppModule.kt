@@ -2,8 +2,6 @@ package com.reift.githubuser.di
 
 import com.reift.core.domain.usecase.detail.DetailInteractor
 import com.reift.core.domain.usecase.detail.DetailUseCase
-import com.reift.core.domain.usecase.followuser.FollowUserInteractor
-import com.reift.core.domain.usecase.followuser.FollowUserUseCase
 import com.reift.core.domain.usecase.search.SearchInteractor
 import com.reift.core.domain.usecase.search.SearchUseCase
 import com.reift.core.domain.usecase.theme.ThemeInteractor

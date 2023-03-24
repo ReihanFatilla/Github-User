@@ -2,7 +2,6 @@ package com.reift.githubuser.presentation.detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -176,5 +175,10 @@ class DetailActivity : AppCompatActivity() {
             btnFollow.setCardBackgroundColor(resources.getColor(R.color.card_background))
             tvFollowStatus.text = resources.getString(R.string.unfollow)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

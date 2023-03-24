@@ -8,7 +8,7 @@
     android:background="?attr/bgColor"
     >
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmemt_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"

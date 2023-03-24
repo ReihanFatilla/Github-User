@@ -19,4 +19,7 @@ dependencies {
 
     // liveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
+    // Leak Canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }
