@@ -22,9 +22,13 @@ android {
         debug {
             buildConfigField("String", "BASE_URL", BaseUrl)
             buildConfigField("String", "API_KEY", ApiKey)
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            buildConfigField("String", "BASE_URL", BaseUrl)
+            buildConfigField("String", "API_KEY", ApiKey)
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
