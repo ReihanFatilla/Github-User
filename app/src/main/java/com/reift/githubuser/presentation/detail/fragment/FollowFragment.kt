@@ -43,22 +43,24 @@ class FollowFragment : Fragment() {
         if (type != null && username != null) {
             when (type) {
                 Constant.TYPE_FOLLOWERS -> {
-                    viewModel.getUserFollowers(username).observe(viewLifecycleOwner) {
+                    viewModel.getUserFollowers(username)
+                    viewModel.userFollowerResponse.observe(viewLifecycleOwner) {
                         setUpFollowersRV(it)
-                        if(it.isNullOrEmpty()) showLoading(true) else showLoading(false)
+                        if (it.isNullOrEmpty()) showLoading(true) else showLoading(false)
                     }
                 }
                 Constant.TYPE_FOLLOWING -> {
-                    viewModel.getUserFollowing(username).observe(viewLifecycleOwner) {
+                    viewModel.getUserFollowing(username)
+                    viewModel.userFollowingResponse.observe(viewLifecycleOwner) {
                         setUpFollowingRV(it)
-                        if(it.isNullOrEmpty()) showLoading(true) else showLoading(false)
+                        if (it.isNullOrEmpty()) showLoading(true) else showLoading(false)
                     }
                 }
             }
         }
     }
 
-    private fun showLoading(loading: Boolean){
+    private fun showLoading(loading: Boolean) {
         if (loading) {
             binding.progressBar.visibility = View.VISIBLE
             binding.rvFollow.visibility = View.GONE

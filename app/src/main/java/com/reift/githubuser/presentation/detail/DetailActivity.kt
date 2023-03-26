@@ -35,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
 
         showLoading(true)
 
-        if(intent.getBooleanExtra(Constant.EXTRA_IS_ONLINE, true)){
+        if (intent.getBooleanExtra(Constant.EXTRA_IS_ONLINE, true)) {
             onlineDetail()
         } else {
 //            offlineDetail()
@@ -53,8 +53,9 @@ class DetailActivity : AppCompatActivity() {
 //    }
 
     private fun onlineDetail() {
-        viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString()).observe(this){
-            if (it != null && it.avatarUrl.isNotEmpty()){
+        viewModel.getUserDetail(intent.getStringExtra(Constant.EXTRA_DETAIL).toString())
+        viewModel.userDetailResponse.observe(this) {
+            if (it != null && it.avatarUrl.isNotEmpty()) {
                 showLoading(false)
                 _user = it
                 setUpDetailView()
@@ -65,12 +66,12 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setUpFollowFeature() {
-        viewModel.getIdByUsername(user.login).observe(this){ entity ->
+        viewModel.getIdByUsername(user.login).observe(this) { entity ->
             val isFollowing = entity != null
-            if(isFollowing) unFollowButtonMode()
+            if (isFollowing) unFollowButtonMode()
 
             binding.btnFollow.setOnClickListener {
-                if(isFollowing){
+                if (isFollowing) {
                     entity?.let { userDel -> viewModel.deleteFollowing(userDel) }
                     Toast.makeText(applicationContext, "Unfollowed!", Toast.LENGTH_SHORT).show()
                     followButtonMode()
@@ -107,8 +108,8 @@ class DetailActivity : AppCompatActivity() {
             with(user) {
                 tvName.text = name
                 tvUsername.text = login
-                tvLocation.text = if(location.isNullOrEmpty()) "none" else location
-                tvCompany.text = if(company.isNullOrEmpty()) "none" else company
+                tvLocation.text = if (location.isNullOrEmpty()) "none" else location
+                tvCompany.text = if (company.isNullOrEmpty()) "none" else company
                 tvUserFollowers.text = followers.toString()
                 tvUserFollowing.text = following.toString()
                 tvUserRepository.text = publicRepos.toString()
@@ -130,7 +131,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.menu_share -> {
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
@@ -151,7 +152,7 @@ class DetailActivity : AppCompatActivity() {
         return super.onSupportNavigateUp()
     }
 
-    private fun showLoading(loading: Boolean){
+    private fun showLoading(loading: Boolean) {
         if (loading) {
             binding.progressBar.visibility = View.VISIBLE
             binding.constraintDetail.visibility = View.INVISIBLE
@@ -163,14 +164,14 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun followButtonMode(){
+    private fun followButtonMode() {
         binding.apply {
             btnFollow.setCardBackgroundColor(resources.getColor(R.color.primary_color))
             tvFollowStatus.text = resources.getString(R.string.follow)
         }
     }
 
-    private fun unFollowButtonMode(){
+    private fun unFollowButtonMode() {
         binding.apply {
             btnFollow.setCardBackgroundColor(resources.getColor(R.color.card_background))
             tvFollowStatus.text = resources.getString(R.string.unfollow)

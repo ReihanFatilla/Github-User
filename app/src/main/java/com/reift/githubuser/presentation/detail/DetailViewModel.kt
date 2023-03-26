@@ -1,32 +1,56 @@
 package com.reift.githubuser.presentation.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.LiveDataReactiveStreams
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import com.reift.core.domain.entity.detail.Detail
 import com.reift.core.domain.entity.detail.Follow
 import com.reift.core.domain.entity.followuser.FollowUser
+import com.reift.core.domain.entity.search.SearchItem
 import com.reift.core.domain.usecase.detail.DetailUseCase
+import io.reactivex.rxjava3.core.Flowable
 
 class DetailViewModel(val detailUseCase: DetailUseCase): ViewModel() {
 
-    fun getUserDetail(username: String): LiveData<Detail> {
-        return LiveDataReactiveStreams.fromPublisher(
+    val userDetailResponse = MediatorLiveData<Detail>()
+    val userFollowerResponse = MediatorLiveData<List<Follow>>()
+    val userFollowingResponse = MediatorLiveData<List<Follow>>()
+
+    fun getUserDetail(username: String): Flowable<Detail> {
+        val source = LiveDataReactiveStreams.fromPublisher(
             detailUseCase.getUserDetail(username)
         )
+
+        userDetailResponse.addSource(source){
+            userDetailResponse.postValue(it)
+            userDetailResponse.removeSource(source)
+        }
+
+        return detailUseCase.getUserDetail(username)
     }
 
-    fun getUserFollowers(username: String): LiveData<List<Follow>> {
-        return LiveDataReactiveStreams.fromPublisher(
+    fun getUserFollowers(username: String): Flowable<List<Follow>> {
+        val source = LiveDataReactiveStreams.fromPublisher(
             detailUseCase.getUserFollowers(username)
         )
+
+        userFollowerResponse.addSource(source){
+            userFollowerResponse.postValue(it)
+            userFollowerResponse.removeSource(source)
+        }
+
+        return detailUseCase.getUserFollowers(username)
     }
 
-    fun getUserFollowing(username: String): LiveData<List<Follow>> {
-        return LiveDataReactiveStreams.fromPublisher(
+    fun getUserFollowing(username: String): Flowable<List<Follow>> {
+        val source = LiveDataReactiveStreams.fromPublisher(
             detailUseCase.getUserFollowing(username)
         )
+
+        userFollowingResponse.addSource(source){
+            userFollowingResponse.postValue(it)
+            userFollowingResponse.removeSource(source)
+        }
+
+        return detailUseCase.getUserFollowing(username)
     }
 
     fun insertFollowing(user: FollowUser) {

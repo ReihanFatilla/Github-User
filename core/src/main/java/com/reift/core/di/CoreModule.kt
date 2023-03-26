@@ -41,8 +41,8 @@ val networkModule = module{
             .addInterceptor {
                 val request = it.request()
                     .newBuilder()
-                    .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization" , "token $API_KEY")
+//                    .addHeader("Content-Type", "application/json")
+//                    .addHeader("Authorization" , "token $API_KEY")
                     .build()
                 return@addInterceptor it.proceed(request)
             }
