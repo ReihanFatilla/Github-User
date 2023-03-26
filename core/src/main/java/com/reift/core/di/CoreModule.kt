@@ -22,11 +22,11 @@ import java.util.concurrent.TimeUnit
 
 val networkModule = module{
     single {
-        val hostname = "api.themoviedb.org"
+        val hostname = "api.github.com"
         val certificatePinner = CertificatePinner.Builder()
-            .add(hostname, "sha256/paJOw+DTCx1KaSMeALtM5gXuxJN4lP04qMKhSXBFa9Y=")
-            .add(hostname, "sha256/qPerI4uMwY1VrtRE5aBY8jIQJopLUuBt2+GDUWMwZn4=")
-            .add(hostname, "sha256/iie1VXtL7HzAMF+/PVPR9xzT80kQxdZeJ+zduCB3uj0=")
+            .add(hostname, "sha256/Jg78dOE+fydIGk19swWwiypUSR6HWZybfnJG/8G7pyM=")
+            .add(hostname, "sha256/e0IRz5Tio3GA1Xs4fUVWmH1xHDiH2dMbVtCBSkOIdqM=")
+            .add(hostname, "sha256/r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=")
             .build()
 
         val logging = HttpLoggingInterceptor()
@@ -61,7 +61,7 @@ val networkModule = module{
 val databaseModule = module {
     factory { get<UserDB>().userDao() }
     single {
-        val passphrase: ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray())
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("githubuser".toCharArray())
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
@@ -85,5 +85,5 @@ val repositoryModule = module {
     single<IUserRepository> { UserRepository(get(), get()) }
 }
 
-const val API_KEY = "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"
+const val API_KEY = "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"
 const val BASE_URL = "https://api.github.com/"
