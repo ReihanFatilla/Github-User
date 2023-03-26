@@ -1,10 +1,8 @@
 package com.reift.githubuser.presentation.detail
 
-import com.reift.core.domain.entity.followuser.FollowUser
 import com.reift.core.domain.usecase.detail.DetailUseCase
 import com.reift.githubuser.utils.Dummy
 import io.reactivex.rxjava3.core.Flowable
-import kotlinx.coroutines.flow.flow
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before

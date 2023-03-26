@@ -4,7 +4,6 @@ import androidx.lifecycle.*
 import com.reift.core.domain.entity.detail.Detail
 import com.reift.core.domain.entity.detail.Follow
 import com.reift.core.domain.entity.followuser.FollowUser
-import com.reift.core.domain.entity.search.SearchItem
 import com.reift.core.domain.usecase.detail.DetailUseCase
 import io.reactivex.rxjava3.core.Flowable
 

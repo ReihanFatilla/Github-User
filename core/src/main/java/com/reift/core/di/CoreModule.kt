@@ -1,8 +1,6 @@
 package com.reift.core.di
 
 import androidx.room.Room
-import com.reift.core.BuildConfig
-import com.reift.core.BuildConfig.API_KEY
 import com.reift.core.data.UserRepository
 import com.reift.core.data.local.LocalDataSource
 import com.reift.core.data.local.datastore.ThemeDataStore
@@ -51,7 +49,7 @@ val networkModule = module{
     }
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(get())
@@ -86,3 +84,6 @@ val dataSourceModule = module {
 val repositoryModule = module {
     single<IUserRepository> { UserRepository(get(), get()) }
 }
+
+const val API_KEY = "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"
+const val BASE_URL = "https://api.github.com/"
